@@ -14,48 +14,22 @@ namespace WebApiMapster.Services
             _myContext = myContext;
         }
 
-        public DtoPortfolio GetPortfolio(int portfolioId)
+        public DtoPortfolio GetPortfolio(int Id)
         {
-            var dtoPortfolio = new DtoPortfolio();
-            var item = _myContext.portfolio.FirstOrDefault(x => x.PortfolioId == portfolioId);
-            item.Adapt(dtoPortfolio);
+            //var dtoPortfolio = new DtoPortfolio();
+            var item = _myContext.portfolio.FirstOrDefault(x => x.Id == Id);
+            //item.Adapt(dtoPortfolio);
+            var dtoPortfolio = item.Adapt<DtoPortfolio>();
             return dtoPortfolio;
-        }
-
-        public void DeletePortfolio(int portfolioId)
-        {
-            var item = _myContext.portfolio.FirstOrDefault(x => x.PortfolioId == portfolioId);
-
-            if (item != null)
-            {
-                _myContext.portfolio.Remove(item);
-                _myContext.SaveChanges();
-            }
-        }
-
-        public void InsertPortfolio(portfolio item)
-        {
-            if (item != null)
-            {
-                _myContext.portfolio.Add(item);
-                _myContext.SaveChanges();
-            }
-        }
-
-        public void UpdatePortfolio(portfolio item)
-        {
-            if (item != null)
-            {
-                _myContext.portfolio.Update(item);
-                _myContext.SaveChanges();
-            }
+        
         }
 
         public IEnumerable<DtoPortfolio> GetPortfolios()
         {
-            var dtoPortfolios = new List<DtoPortfolio>();
+            //var dtoPortfolios = new List<DtoPortfolio>();
             var item = _myContext.portfolio.ToList();
-            item.Adapt(dtoPortfolios);
+            //item.Adapt(dtoPortfolios);
+            var dtoPortfolios = item.Adapt<IEnumerable<DtoPortfolio>>();
             return dtoPortfolios;
         }
     }

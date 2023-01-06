@@ -8,8 +8,5 @@ namespace WebApiMapster.Services
     {
         IEnumerable<DtoPortfolio> GetPortfolios();
         DtoPortfolio GetPortfolio(int portfolioId);
-        void InsertPortfolio(portfolio item);
-        void UpdatePortfolio(portfolio item);
-        void DeletePortfolio(int portfolioId);
     }
 }

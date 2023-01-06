@@ -16,10 +16,10 @@ namespace WebApiMapster.Controllers
         }
 
         [HttpGet]
-        [Route("{portfolioId}")]
-        public IActionResult GetPortfolio(int portfolioId)
+        [Route("{Id}")]
+        public IActionResult GetPortfolio(int Id)
         {
-            var res = repository.GetPortfolio(portfolioId);
+            var res = repository.GetPortfolio(Id);
             return Ok(res);
         }
 
@@ -29,28 +29,6 @@ namespace WebApiMapster.Controllers
         {
             var res = repository.GetPortfolios();
             return Ok(res);
-        }
-
-        [HttpPost]
-        public IActionResult AddPortfolio([FromBody] portfolio item)
-        {
-            repository.InsertPortfolio(item);
-            return Ok();
-        }
-
-        [HttpPut]
-        public IActionResult UpdatePortfolio([FromBody] portfolio item)
-        {
-            repository.UpdatePortfolio(item);
-            return Ok();
-        }
-
-        [HttpDelete]
-        [Route("{portfolioId}")]
-        public IActionResult RemovePortfolio(int portfolioId)
-        {
-            repository.DeletePortfolio(portfolioId);
-            return Ok();
         }
     }
 }
