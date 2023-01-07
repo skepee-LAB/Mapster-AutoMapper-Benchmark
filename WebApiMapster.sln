@@ -3,7 +3,9 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.4.33205.214
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WebApiMapster", "WebApiMapster\WebApiMapster.csproj", "{7B4F358C-9E71-46B8-BB4A-E2F2DADD614F}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "WebApiMapster", "WebApiMapster\WebApiMapster.csproj", "{7B4F358C-9E71-46B8-BB4A-E2F2DADD614F}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WebApiMapsterCodeGen", "WebApiMapsterCodeGen\WebApiMapsterCodeGen.csproj", "{10995730-7129-4D83-B1AD-14A5078B88F1}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -15,6 +17,10 @@ Global
 		{7B4F358C-9E71-46B8-BB4A-E2F2DADD614F}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{7B4F358C-9E71-46B8-BB4A-E2F2DADD614F}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{7B4F358C-9E71-46B8-BB4A-E2F2DADD614F}.Release|Any CPU.Build.0 = Release|Any CPU
+		{10995730-7129-4D83-B1AD-14A5078B88F1}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{10995730-7129-4D83-B1AD-14A5078B88F1}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{10995730-7129-4D83-B1AD-14A5078B88F1}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{10995730-7129-4D83-B1AD-14A5078B88F1}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
