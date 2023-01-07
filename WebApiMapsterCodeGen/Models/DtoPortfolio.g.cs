@@ -1,6 +1,6 @@
 using System;
 
-namespace WebApiMapsterCodeGen
+namespace WebApiMapsterCodeGen.Domains
 {
     public partial class DtoPortfolio
     {

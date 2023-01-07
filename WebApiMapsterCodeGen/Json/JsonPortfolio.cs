@@ -1,6 +1,6 @@
 ﻿using System.ComponentModel.DataAnnotations;
 
-namespace WebApiMapsterCodeGen
+namespace WebApiMapsterCodeGen.Json
 {
     public class JsonPortfolio
     {
@@ -21,12 +21,12 @@ namespace WebApiMapsterCodeGen
     {
         public string value { get; set; }
         public int numWords { get; set; }
-        public int length { get; set; }   
+        public int length { get; set; }
     }
 
 
     public class IntProperties
-    { 
+    {
         public int minValue { get; set; }
 
         public int maxValue { get; set; }

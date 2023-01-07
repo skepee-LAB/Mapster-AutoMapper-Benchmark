@@ -3,7 +3,7 @@ using System;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 
-namespace WebApiMapsterCodeGen
+namespace WebApiMapsterCodeGen.Domains
 {
     [Table("portfolioBig")]
     [AdaptTo("Dto[name]")]

@@ -1,6 +1,6 @@
 using System;
 using System.Linq.Expressions;
-using WebApiMapsterCodeGen;
+using WebApiMapsterCodeGen.Domains;
 using WebApiMapsterCodeGen.Mappers;
 
 namespace WebApiMapsterCodeGen.Mappers

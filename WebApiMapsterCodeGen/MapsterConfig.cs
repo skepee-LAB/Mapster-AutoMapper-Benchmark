@@ -1,7 +1,7 @@
 ﻿using Mapster;
 using System.Text;
-//using WebApiMapster.Dto;
-//using WebApiMapster.Model;
+using WebApiMapsterCodeGen.Domains;
+using WebApiMapsterCodeGen.Json;
 
 namespace WebApiMapsterCodeGen
 {

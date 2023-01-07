@@ -1,38 +1,35 @@
 ﻿using Mapster;
 using Microsoft.AspNetCore.Components;
-//using WebApiMapsterCodeGen.Dto;
-using WebApiMapsterCodeGen.Model;
+using WebApiMapsterCodeGen.Json;
+using WebApiMapsterCodeGen.Mappers;
 
 namespace WebApiMapsterCodeGen.Services
 {
     public class PortfolioRepository:IPortfolioRepository
     {
-        private MyContext _myContext;
+        private MyContext myContext;
+        public readonly IPortfolioMapper portfolioMapper;
 
-        public PortfolioRepository(MyContext myContext)
+
+
+        public PortfolioRepository(MyContext _myContext, IPortfolioMapper _portfolioMapper)
         {
-            _myContext = myContext;
+            myContext = _myContext;
+            portfolioMapper = _portfolioMapper;
         }
 
-        public DtoPortfolio GetPortfolio(int Id)
+        public JsonPortfolio GetPortfolio(int Id)
         {
-            ////var dtoPortfolio = new DtoPortfolio();
-            //var item = _myContext.portfolio.FirstOrDefault(x => x.Id == Id);
-            ////item.Adapt(dtoPortfolio);
-            //var dtoPortfolio = item.Adapt<DtoPortfolio>();
-            //return dtoPortfolio;
-            return null;
-        
+            var res = myContext.portfolio.Select(portfolioMapper.PortfolioProjection).FirstOrDefault(x => x.Id == Id);
+            var jsonPortfolio = res?.Adapt<JsonPortfolio>();
+            return jsonPortfolio;
         }
 
-        public IEnumerable<DtoPortfolio> GetPortfolios()
+        public IEnumerable<JsonPortfolio> GetPortfolios()
         {
-            ////var dtoPortfolios = new List<DtoPortfolio>();
-            //var item = _myContext.portfolio.ToList();
-            ////item.Adapt(dtoPortfolios);
-            //var dtoPortfolios = item.Adapt<IEnumerable<DtoPortfolio>>();
-            //return dtoPortfolios;
-            return null;
+            var res = myContext.portfolio.Select(portfolioMapper.PortfolioProjection);
+            var jsonPortfolio = res?.Adapt<IEnumerable<JsonPortfolio>>();
+            return jsonPortfolio;
         }
     }
 }

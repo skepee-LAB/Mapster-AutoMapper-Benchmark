@@ -1,5 +1,6 @@
 ﻿using Mapster;
 using System.Linq.Expressions;
+using WebApiMapsterCodeGen.Domains;
 
 namespace WebApiMapsterCodeGen.Mappers
 {
@@ -7,7 +8,5 @@ namespace WebApiMapsterCodeGen.Mappers
     public interface IPortfolioMapper
     {
        Expression<Func<Portfolio, DtoPortfolio>> PortfolioProjection { get; }
-        //DtoPortfolio Map(Portfolio portfolio);
-
     }
 }

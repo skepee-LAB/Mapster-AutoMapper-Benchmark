@@ -1,7 +1,5 @@
-﻿using Mapster;
-using Microsoft.AspNetCore.Mvc;
-using WebApiMapsterCodeGen.Mappers;
-//using WebApiMapsterCodeGen.Model;
+﻿using Microsoft.AspNetCore.Mvc;
+using WebApiMapsterCodeGen.Services;
 
 namespace WebApiMapsterCodeGen.Controllers
 {
@@ -9,29 +7,26 @@ namespace WebApiMapsterCodeGen.Controllers
     [ApiController]
     public class MapsterController : Controller
     {
-        public readonly MyContext myContext;
-        public readonly IPortfolioMapper portfolioMapper;
+        public readonly IPortfolioRepository repository;
 
-        public MapsterController(MyContext _myContext, IPortfolioMapper _portfolioMapper)
+        public MapsterController(IPortfolioRepository _repository)
         {
-            myContext = _myContext;
-            portfolioMapper = _portfolioMapper;
+            repository = _repository;
         }
 
         [HttpGet]
         [Route("{Id}")]
         public IActionResult GetPortfolio(int Id)
         {
-            var res = myContext.portfolio.Select(portfolioMapper.PortfolioProjection).FirstOrDefault(x=>x.Id==Id);
-            var jsonPortfolio = res?.Adapt<JsonPortfolio>();
-            return Ok(jsonPortfolio);
+            var res = repository.GetPortfolio(Id);
+            return Ok(res);
         }
 
         [HttpGet]
         [Route("all")]
         public IActionResult GetPortfolios()
         {
-            var res = myContext.portfolio.Select(portfolioMapper.PortfolioProjection);
+            var res = repository.GetPortfolios();
             return Ok(res);
         }
     }

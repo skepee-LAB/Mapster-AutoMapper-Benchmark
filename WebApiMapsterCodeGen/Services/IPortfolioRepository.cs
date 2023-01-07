@@ -1,12 +1,10 @@
-﻿using System.Collections.Generic;
-//using WebApiMapsterCodeGen.Dto;
-using WebApiMapsterCodeGen.Model;
+﻿using WebApiMapsterCodeGen.Json;
 
 namespace WebApiMapsterCodeGen.Services
 {
     public interface IPortfolioRepository
     {
-        IEnumerable<DtoPortfolio> GetPortfolios();
-        DtoPortfolio GetPortfolio(int portfolioId);
+        IEnumerable<JsonPortfolio> GetPortfolios();
+        JsonPortfolio GetPortfolio(int portfolioId);
     }
 }

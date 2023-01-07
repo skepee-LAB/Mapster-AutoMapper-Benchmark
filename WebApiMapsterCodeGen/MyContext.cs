@@ -1,5 +1,6 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using System.ComponentModel.DataAnnotations.Schema;
+using WebApiMapsterCodeGen.Domains;
 
 namespace WebApiMapsterCodeGen
 {
