@@ -1,33 +1,29 @@
 ﻿using Mapster;
-using Microsoft.AspNetCore.Components;
+using WebApiMapsterCodeGen.Domains;
 using WebApiMapsterCodeGen.Json;
-using WebApiMapsterCodeGen.Mappers;
 
 namespace WebApiMapsterCodeGen.Services
 {
     public class PortfolioRepository:IPortfolioRepository
     {
         private MyContext myContext;
-        public readonly IPortfolioMapper portfolioMapper;
 
-
-
-        public PortfolioRepository(MyContext _myContext, IPortfolioMapper _portfolioMapper)
+        public PortfolioRepository(MyContext _myContext)
         {
             myContext = _myContext;
-            portfolioMapper = _portfolioMapper;
         }
 
         public JsonPortfolio GetPortfolio(int Id)
         {
-            var res = myContext.portfolio.Select(portfolioMapper.PortfolioProjection).FirstOrDefault(x => x.Id == Id);
-            var jsonPortfolio = res?.Adapt<JsonPortfolio>();
+            var res = myContext.portfolio.FirstOrDefault(x => x.Id == Id);
+            var res_map = res?.Adapt<PortfolioMap>();
+            var jsonPortfolio = res_map?.Adapt<JsonPortfolio>();
             return jsonPortfolio;
         }
 
         public IEnumerable<JsonPortfolio> GetPortfolios()
         {
-            var res = myContext.portfolio.Select(portfolioMapper.PortfolioProjection);
+            var res = myContext.portfolio.ToList();
             var jsonPortfolio = res?.Adapt<IEnumerable<JsonPortfolio>>();
             return jsonPortfolio;
         }

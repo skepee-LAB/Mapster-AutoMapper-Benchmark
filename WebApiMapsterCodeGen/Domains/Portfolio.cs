@@ -6,7 +6,7 @@ using System.ComponentModel.DataAnnotations.Schema;
 namespace WebApiMapsterCodeGen.Domains
 {
     [Table("portfolioBig")]
-    [AdaptTo("Dto[name]")]
+    [AdaptTo("[name]Map")]
     public class Portfolio
     {
         [Key]

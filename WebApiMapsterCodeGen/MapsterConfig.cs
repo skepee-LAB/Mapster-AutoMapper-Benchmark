@@ -9,7 +9,7 @@ namespace WebApiMapsterCodeGen
     {
         public static void RegisterMapsterConfiguration(this IServiceCollection services)
         {
-            TypeAdapterConfig<DtoPortfolio, JsonPortfolio>
+            TypeAdapterConfig<PortfolioMap, JsonPortfolio>
                 .NewConfig()
                 .Map(dest => dest.DtoId, src => src.Id)
                 .Map(dest => dest.DtoCode, src => src.Code)
@@ -58,7 +58,7 @@ namespace WebApiMapsterCodeGen
             };
         }
 
-        private static DecimalProperties CalculateDecimalOperation(DtoPortfolio src)
+        private static DecimalProperties CalculateDecimalOperation(PortfolioMap src)
         {
             return new DecimalProperties {
                 minValue= new decimal[] { src.Prop101, src.Prop102, src.Prop103, src.Prop104, src.Prop105, src.Prop106, src.Prop107, src.Prop108, src.Prop109, src.Prop110 }.Min(),

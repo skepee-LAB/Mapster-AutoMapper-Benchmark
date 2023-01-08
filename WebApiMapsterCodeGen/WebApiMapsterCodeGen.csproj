@@ -24,6 +24,14 @@
 	</ItemGroup>
 
 	<ItemGroup>
+	  <Compile Remove="Mappers\**" />
+	  <Content Remove="Mappers\**" />
+	  <EmbeddedResource Remove="Mappers\**" />
+	  <Generated Remove="Mappers\**" />
+	  <None Remove="Mappers\**" />
+	</ItemGroup>
+
+	<ItemGroup>
 	  <Compile Remove="MapsterCodeGen.cs" />
 	</ItemGroup>
 

@@ -1,6 +1,5 @@
 using Microsoft.EntityFrameworkCore;
 using WebApiMapsterCodeGen;
-using WebApiMapsterCodeGen.Mappers;
 using WebApiMapsterCodeGen.Services;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -12,7 +11,6 @@ builder.Services.AddControllers();
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 builder.Services.AddDbContext<MyContext>(options => options.UseSqlServer(builder.Configuration.GetConnectionString("local")));
-builder.Services.AddScoped<IPortfolioMapper, PortfolioMapper>();
 builder.Services.AddScoped<IPortfolioRepository, PortfolioRepository>();
 builder.Services.RegisterMapsterConfiguration();
 

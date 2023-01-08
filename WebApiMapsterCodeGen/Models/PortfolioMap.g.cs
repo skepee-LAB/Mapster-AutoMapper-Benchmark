@@ -2,7 +2,7 @@ using System;
 
 namespace WebApiMapsterCodeGen.Domains
 {
-    public partial class DtoPortfolio
+    public partial class PortfolioMap
     {
         public int Id { get; set; }
         public string Code { get; set; }
