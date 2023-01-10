@@ -14,7 +14,7 @@ namespace BenchmarkMapper
         [Benchmark]
         public JsonPortfolio MapsterCodeGen() => MappingSamples.MapsterCodeGenSample();
 
-
-
+        [Benchmark]
+        public DtoPortfolio AutoMapper() => MappingSamples.AutoMapperSample();
     }
 }

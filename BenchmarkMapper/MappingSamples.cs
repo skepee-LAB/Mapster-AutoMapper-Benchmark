@@ -2,12 +2,17 @@
 using BenchmarkMapper.Dto;
 using BenchmarkMapper.Json;
 using Mapster;
+using AutoMapper;
 using System.Text;
 
 namespace BenchmarkMapper
 {
     public static class MappingSamples
     {
+
+        private static readonly IMapper automapper = new Mapper(new MapperConfiguration(z => z.AddProfile(new AutomapperProfile())));
+
+
         internal static DtoPortfolio MapsterAdaptSample()
         {
             return PortfolioSample().Adapt<DtoPortfolio>(GetTypeAdapterConfig_NoCodeGen());
@@ -321,6 +326,19 @@ namespace BenchmarkMapper
         {
             var res_map = PortfolioSample().Adapt<PortfolioMap>();
             return res_map.Adapt<JsonPortfolio>(GetTypeAdapterConfig_CodeGen());
+        }
+
+        internal static DtoPortfolio AutoMapperSample()
+        {
+            return automapper.Map<DtoPortfolio>(PortfolioSample());
+        }
+
+        internal class AutomapperProfile : Profile
+        {
+            public AutomapperProfile()
+            {
+                CreateMap<Portfolio, DtoPortfolio>();
+            }       
         }
     }
 }
