@@ -5,6 +5,7 @@ using BenchmarkMapper.Json;
 
 namespace BenchmarkMapper
 {
+    [Config(typeof(AntiVirusFriendlyConfig))]
     [MemoryDiagnoser, Orderer(SummaryOrderPolicy.FastestToSlowest)]
     public class MappingBenchmark
     {
