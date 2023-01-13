@@ -9,7 +9,9 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "WebApiMapsterCodeGen", "Web
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BenchmarkMapper", "BenchmarkMapper\BenchmarkMapper.csproj", "{5CF28427-0B26-433F-ABA9-E349490BAA0A}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WebApiAutoMapper", "WebApiAutoMapper\WebApiAutoMapper.csproj", "{6A7A4748-EC95-484C-A423-4E92FB917E96}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "WebApiAutoMapper", "WebApiAutoMapper\WebApiAutoMapper.csproj", "{6A7A4748-EC95-484C-A423-4E92FB917E96}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "UnFlattened", "UnFlattened", "{11ED0865-7A6F-4618-BA5E-C489D0005AD7}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -36,6 +38,12 @@ Global
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{7B4F358C-9E71-46B8-BB4A-E2F2DADD614F} = {11ED0865-7A6F-4618-BA5E-C489D0005AD7}
+		{10995730-7129-4D83-B1AD-14A5078B88F1} = {11ED0865-7A6F-4618-BA5E-C489D0005AD7}
+		{5CF28427-0B26-433F-ABA9-E349490BAA0A} = {11ED0865-7A6F-4618-BA5E-C489D0005AD7}
+		{6A7A4748-EC95-484C-A423-4E92FB917E96} = {11ED0865-7A6F-4618-BA5E-C489D0005AD7}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {4742C652-23F4-4B43-A99A-A2249901D8DE}
