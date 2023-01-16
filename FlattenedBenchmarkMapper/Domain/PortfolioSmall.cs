@@ -1,9 +1,9 @@
 ﻿using Mapster;
 using System.ComponentModel.DataAnnotations;
+using System.Runtime.Serialization;
 
 namespace FlattenedBenchmarkMapper.Domains
 {
-    [AdaptTo("[name]Map")]
     public class PortfolioSmall
     {
         [Key]

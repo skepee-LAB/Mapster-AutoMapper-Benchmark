@@ -4,9 +4,9 @@ using FlattenedBenchmarkMapper.Dto;
 
 namespace FlattenedBenchmarkMapper
 {
-    public class PortfolioProfile: Profile
+    public class PortfolioProfileSmall: Profile
     {
-        public PortfolioProfile()
+        public PortfolioProfileSmall()
         {
             CreateMap<PortfolioSmall, DtoPortfolioSmallWithAdapter>()
                 .ForMember(dest => dest.DtoId, opt => opt.MapFrom(src => src.Id))

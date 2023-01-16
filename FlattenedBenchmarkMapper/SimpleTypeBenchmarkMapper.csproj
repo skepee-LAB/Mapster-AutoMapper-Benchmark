@@ -29,6 +29,11 @@
 	</Target>
 
 	<ItemGroup>
+	  <Compile Remove="AutoMapperBenchmarkPortfolioSmallWithAdapter.cs" />
+	</ItemGroup>
+
+	<ItemGroup>
+	<Folder Include="BenchmarkDotNet.Artifacts\" />
 	<Folder Include="Models\" />
 	</ItemGroup>
 
