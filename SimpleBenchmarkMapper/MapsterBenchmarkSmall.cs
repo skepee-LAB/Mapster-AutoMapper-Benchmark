@@ -10,7 +10,7 @@ namespace SimpleBenchmarkMapper
     [MemoryDiagnoser, Orderer(SummaryOrderPolicy.FastestToSlowest)]
     public class MapsterBenchmarkSmall
     {
-        [Params(10, 100)]
+        [Params(10, 100, 1000)]
         public int numElements { get; set; }
         private IEnumerable<PortfolioSmall> portfolios;
 

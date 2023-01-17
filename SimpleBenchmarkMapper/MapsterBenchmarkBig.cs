@@ -1,15 +1,16 @@
 ﻿using BenchmarkDotNet.Attributes;
 using BenchmarkDotNet.Order;
 using SimpleBenchmarkMapper.Domains;
+using SimpleBenchmarkMapper.Dto;
 using Mapster;
 
 namespace SimpleBenchmarkMapper
 {
     [Config(typeof(AntiVirusFriendlyConfig))]
     [MemoryDiagnoser, Orderer(SummaryOrderPolicy.FastestToSlowest)]
-    public class MapsterCodeGenBenchmarkBig
+    public class MapsterBenchmarkBig
     {
-        [Params(10, 100)]
+        [Params(10, 100, 1000)]
         public int numElements { get; set; }
         private IEnumerable<PortfolioBig> portfolios;
 
@@ -232,20 +233,20 @@ namespace SimpleBenchmarkMapper
         }
 
         [Benchmark]
-        public void FlattenedMapsterCodeGenPortfolioBigNoAdapter()
+        public void FlattenedMapsterPortfolioBigNoAdapter()
         {
             foreach (var p in portfolios)
             {
-                var pDto = p.Adapt<PortfolioBigMap>();
+                var pDto = p.Adapt<DtoPortfolioBigNoAdapter>();
             }
         }
 
         [Benchmark]
-        public void FlattenedMapsterCodeGenPortfolioBigWithAdapter()
+        public void FlattenedMapsterPortfolioSmallWithAdapter()
         {
             foreach (var p in portfolios)
             {
-                var pDto = p.Adapt<PortfolioBigMap>();
+                var pDto = p.Adapt<DtoPortfolioBigWithAdapter>();
             }
         }
     }
