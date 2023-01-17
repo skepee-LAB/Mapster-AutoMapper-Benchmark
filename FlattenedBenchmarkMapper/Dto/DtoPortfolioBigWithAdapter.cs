@@ -1,7 +1,7 @@
 ﻿using Mapster;
 using System.ComponentModel.DataAnnotations;
 
-namespace FlattenedBenchmarkMapper.Dto
+namespace SimpleBenchmarkMapper.Dto
 {
     public class DtoPortfolioBigWithAdapter
     {

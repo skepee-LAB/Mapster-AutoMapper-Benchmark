@@ -1,7 +1,7 @@
 ﻿using Mapster;
 using System.ComponentModel.DataAnnotations;
 
-namespace FlattenedBenchmarkMapper.Domains
+namespace SimpleBenchmarkMapper.Domains
 {
     [AdaptTo("[name]Map")]
     public class PortfolioBig

@@ -1,5 +1,5 @@
-﻿using FlattenedBenchmarkMapper.Domains;
-using FlattenedBenchmarkMapper.Dto;
+﻿using SimpleBenchmarkMapper.Domains;
+using SimpleBenchmarkMapper.Dto;
 using Mapster;
 using System;
 using System.Collections.Generic;
@@ -7,7 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace FlattenedBenchmarkMapper
+namespace SimpleBenchmarkMapper
 {
     internal class MapsterConfig: ICodeGenerationRegister
     {

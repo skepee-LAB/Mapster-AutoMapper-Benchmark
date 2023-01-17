@@ -1,10 +1,10 @@
 ﻿using AutoMapper;
 using BenchmarkDotNet.Attributes;
 using BenchmarkDotNet.Order;
-using FlattenedBenchmarkMapper.Domains;
-using FlattenedBenchmarkMapper.Dto;
+using SimpleBenchmarkMapper.Domains;
+using SimpleBenchmarkMapper.Dto;
 
-namespace FlattenedBenchmarkMapper
+namespace SimpleBenchmarkMapper
 {
     [Config(typeof(AntiVirusFriendlyConfig))]
     [MemoryDiagnoser, Orderer(SummaryOrderPolicy.FastestToSlowest)]

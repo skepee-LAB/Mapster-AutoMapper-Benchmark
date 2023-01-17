@@ -1,6 +1,6 @@
 ﻿// See https://aka.ms/new-console-template for more information
 using BenchmarkDotNet.Running;
-using FlattenedBenchmarkMapper;
+using BenchmarkMapper;
 
 Console.WriteLine("Benchmark AutoMapper Portfolio Small");
 //var summaryAutoMapperSmall = BenchmarkRunner.Run<AutoMapperBenchmarkSmall>();

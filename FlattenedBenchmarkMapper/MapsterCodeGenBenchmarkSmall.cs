@@ -1,9 +1,9 @@
 ﻿using BenchmarkDotNet.Attributes;
 using BenchmarkDotNet.Order;
-using FlattenedBenchmarkMapper.Domains;
+using SimpleBenchmarkMapper.Domains;
 using Mapster;
 
-namespace FlattenedBenchmarkMapper
+namespace SimpleBenchmarkMapper
 {
     [Config(typeof(AntiVirusFriendlyConfig))]
     [MemoryDiagnoser, Orderer(SummaryOrderPolicy.FastestToSlowest)]

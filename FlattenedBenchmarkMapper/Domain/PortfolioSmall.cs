@@ -2,7 +2,7 @@
 using System.ComponentModel.DataAnnotations;
 using System.Runtime.Serialization;
 
-namespace FlattenedBenchmarkMapper.Domains
+namespace SimpleBenchmarkMapper.Domains
 {
     public class PortfolioSmall
     {

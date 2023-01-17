@@ -1,8 +1,8 @@
 ﻿using AutoMapper;
-using FlattenedBenchmarkMapper.Domains;
-using FlattenedBenchmarkMapper.Dto;
+using SimpleBenchmarkMapper.Domains;
+using SimpleBenchmarkMapper.Dto;
 
-namespace FlattenedBenchmarkMapper
+namespace SimpleBenchmarkMapper
 {
     public class PortfolioProfileBig: Profile
     {

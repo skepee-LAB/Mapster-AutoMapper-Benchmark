@@ -1,6 +1,6 @@
 using System;
 
-namespace FlattenedBenchmarkMapper.Domains
+namespace SimpleBenchmarkMapper.Domains
 {
     public partial class PortfolioBigMap
     {

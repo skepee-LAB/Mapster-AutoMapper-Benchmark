@@ -3,7 +3,7 @@ using BenchmarkDotNet.Jobs;
 using BenchmarkDotNet.Toolchains.InProcess;
 using BenchmarkDotNet.Toolchains.InProcess.NoEmit;
 
-namespace FlattenedBenchmarkMapper
+namespace SimpleBenchmarkMapper
 {
     internal class AntiVirusFriendlyConfig : ManualConfig
     {
