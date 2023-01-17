@@ -10,7 +10,7 @@ namespace SimpleBenchmarkMapper
     [MemoryDiagnoser, Orderer(SummaryOrderPolicy.FastestToSlowest)]
     public class AutoMapperBenchmarkBig
     {
-        [Params(10, 100)]
+        [Params(10, 100, 1000)]
         public int numElements { get; set; }
         private IEnumerable<PortfolioBig> portfoliosBig { get; set; }
         private static readonly IMapper automapperBig = new Mapper(new MapperConfiguration(z => z.AddProfile(new AutomapperProfileBigPortfolio())));
