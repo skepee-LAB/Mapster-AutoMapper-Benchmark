@@ -3,13 +3,13 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.4.33205.214
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "UnflattenedWebApiMapster", "UnFlattenedWebApiMapster\UnflattenedWebApiMapster.csproj", "{7B4F358C-9E71-46B8-BB4A-E2F2DADD614F}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ComplexWebApiMapster", "UnFlattenedWebApiMapster\ComplexWebApiMapster.csproj", "{7B4F358C-9E71-46B8-BB4A-E2F2DADD614F}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "UnflattenedWebApiMapsterCodeGen", "UnFlattenedWebApiMapsterCodeGen\UnflattenedWebApiMapsterCodeGen.csproj", "{10995730-7129-4D83-B1AD-14A5078B88F1}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ComplexWebApiMapsterCodeGen", "UnFlattenedWebApiMapsterCodeGen\ComplexWebApiMapsterCodeGen.csproj", "{10995730-7129-4D83-B1AD-14A5078B88F1}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ComplexBenchmarkMapper", "UnFlattenedBenchmarkMapper\ComplexBenchmarkMapper.csproj", "{5CF28427-0B26-433F-ABA9-E349490BAA0A}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "UnflattenedWebApiAutoMapper", "UnFlattenedWebApiAutoMapper\UnflattenedWebApiAutoMapper.csproj", "{6A7A4748-EC95-484C-A423-4E92FB917E96}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ComplexWebApiAutoMapper", "UnFlattenedWebApiAutoMapper\ComplexWebApiAutoMapper.csproj", "{6A7A4748-EC95-484C-A423-4E92FB917E96}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SimpleBenchmarkMapper", "SimpleBenchmarkMapper\SimpleBenchmarkMapper.csproj", "{6D54F033-2438-427D-8460-4882BD056931}"
 EndProject
