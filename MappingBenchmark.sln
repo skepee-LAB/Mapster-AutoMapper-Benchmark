@@ -13,6 +13,10 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "UnflattenedWebApiAutoMapper
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SimpleBenchmarkMapper", "SimpleBenchmarkMapper\SimpleBenchmarkMapper.csproj", "{6D54F033-2438-427D-8460-4882BD056931}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "SimpleMapping", "SimpleMapping", "{2160D2F1-B0EC-4CA2-B5EE-D8F779D1F0A2}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "ComplexMapping", "ComplexMapping", "{3D91E0A4-9F70-4E4F-88A0-A702D3C79136}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -42,6 +46,13 @@ Global
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{7B4F358C-9E71-46B8-BB4A-E2F2DADD614F} = {3D91E0A4-9F70-4E4F-88A0-A702D3C79136}
+		{10995730-7129-4D83-B1AD-14A5078B88F1} = {3D91E0A4-9F70-4E4F-88A0-A702D3C79136}
+		{5CF28427-0B26-433F-ABA9-E349490BAA0A} = {3D91E0A4-9F70-4E4F-88A0-A702D3C79136}
+		{6A7A4748-EC95-484C-A423-4E92FB917E96} = {3D91E0A4-9F70-4E4F-88A0-A702D3C79136}
+		{6D54F033-2438-427D-8460-4882BD056931} = {2160D2F1-B0EC-4CA2-B5EE-D8F779D1F0A2}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {4742C652-23F4-4B43-A99A-A2249901D8DE}
