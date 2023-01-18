@@ -32,7 +32,7 @@ namespace SimpleBenchmarkMapper
         }
 
         [Benchmark]
-        public void FlattenedMapsterCodeGenPortfolioSmallNoAdapter()
+        public void MapsterCodeGenPortfolioSmallNoAdapter()
         {
             foreach (var p in portfolios)
             {
@@ -41,7 +41,7 @@ namespace SimpleBenchmarkMapper
         }
 
         [Benchmark]
-        public void FlattenedMapsterCodeGenPortfolioSmallWithAdapter()
+        public void MapsterCodeGenPortfolioSmallWithAdapter()
         {
             foreach (var p in portfolios)
             {

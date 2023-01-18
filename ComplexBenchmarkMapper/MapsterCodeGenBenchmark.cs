@@ -1,24 +1,22 @@
-﻿using AutoMapper;
+﻿using BenchmarkMapper.Domains;
+using BenchmarkMapper.Dto;
 using BenchmarkDotNet.Attributes;
 using BenchmarkDotNet.Order;
-using SimpleBenchmarkMapper.Domains;
-using SimpleBenchmarkMapper.Dto;
+using Mapster;
 
-namespace SimpleBenchmarkMapper
+namespace BenchmarkMapper
 {
     [Config(typeof(AntiVirusFriendlyConfig))]
     [MemoryDiagnoser, Orderer(SummaryOrderPolicy.FastestToSlowest)]
-    public class AutoMapperBenchmarkBig
+    public class MapsterCodeGenBenchmark
     {
         [Params(10, 100, 1000)]
         public int numElements { get; set; }
-        private IEnumerable<PortfolioBig> portfoliosBig { get; set; }
-        private static readonly IMapper automapperBig = new Mapper(new MapperConfiguration(z => z.AddProfile(new AutomapperProfileBigPortfolio())));
-        private static readonly IMapper automapperProfileBig = new Mapper(new MapperConfiguration(z => z.AddProfile(new PortfolioProfileBig())));
+        private IEnumerable<Portfolio> portfolios;
 
-        public PortfolioBig PortfolioSampleBig()
+        public Portfolio PortfolioSample()
         {
-            return new PortfolioBig()
+            return new Portfolio()
             {
                 Id = 1,
                 Code = "ABCD1",
@@ -231,34 +229,17 @@ namespace SimpleBenchmarkMapper
         [GlobalSetup]
         public void Init()
         {
-            portfoliosBig = Enumerable.Range(1, numElements).Select(x => PortfolioSampleBig());
+            portfolios = Enumerable.Range(1, numElements).Select(x => PortfolioSample());
         }
 
-        internal class AutomapperProfileBigPortfolio : Profile
-        {
-            public AutomapperProfileBigPortfolio()
-            {
-                CreateMap<PortfolioBig, DtoPortfolioBigNoAdapter>();
-            }
-        }
 
         [Benchmark]
-        public void AutoMapperPortfolioBigNoAdapter()
+        public void MapsterCodeGenPortfolio()
         {
-            foreach (var p in portfoliosBig)
+            foreach (var p in portfolios)
             {
-                var pDto = automapperBig.Map<DtoPortfolioBigNoAdapter>(p);
+                var pDto = p.Adapt<PortfolioMap>().Adapt<DtoPortfolio>();
             }
         }
-
-        [Benchmark]
-        public void AutoMapperPortfolioBigWithAdapter()
-        {
-            foreach (var p in portfoliosBig)
-            {
-                var pDto = automapperProfileBig.Map<DtoPortfolioBigWithAdapter>(p);
-            }
-        }
-
     }
 }

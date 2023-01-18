@@ -44,7 +44,7 @@ namespace SimpleBenchmarkMapper
         }
 
         [Benchmark]
-        public void FlattenedAutoMapperPortfolioSmallNoAdapter()
+        public void AutoMapperPortfolioSmallNoAdapter()
         {
             foreach (var p in portfoliosSmall)
             {
@@ -53,7 +53,7 @@ namespace SimpleBenchmarkMapper
         }
 
         [Benchmark]
-        public void FlattenedAutoMapperPortfolioSmallWithAdapter()
+        public void AutoMapperPortfolioSmallWithAdapter()
         {
             foreach (var p in portfoliosSmall)
             {

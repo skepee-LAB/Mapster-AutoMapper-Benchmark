@@ -10,7 +10,7 @@ namespace SimpleBenchmarkMapper.Dto
         public int DtoId { get; set; }
         [AdaptMember("Code")]
         public string? DtoCode { get; set; }
-        [AdaptMember("name")]
+        [AdaptMember("Name")]
         public string? DtoName { get; set; }
         [AdaptMember("Type")]
         public string? DtoType { get; set; }

@@ -1,4 +1,4 @@
-<Project Sdk="Microsoft.NET.Sdk">
+﻿<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
     <OutputType>Exe</OutputType>
@@ -25,7 +25,19 @@
 	</ItemGroup>
 
 	<ItemGroup>
-	  <Folder Include="Models\" />
+	  <Compile Remove="MappingBenchmark.cs" />
+	  <Compile Remove="MappingBenchmarkSamples.cs" />
+	  <Compile Remove="MapsterCodeGenConfig.cs" />
+	  <Compile Remove="PortfolioProfileBig.cs" />
+	  <Compile Remove="PortfolioProfileSmall.cs" />
+	</ItemGroup>
+
+	<ItemGroup>
+	  <Generated Remove="Models\PortfolioMap.g.cs" />
+	</ItemGroup>
+
+	<ItemGroup>
+	  <Folder Include="BenchmarkDotNet.Artifacts\" />
 	</ItemGroup>
 
 	<Target Name="CleanGenerated">

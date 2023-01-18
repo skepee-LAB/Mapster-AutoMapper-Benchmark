@@ -27,7 +27,7 @@ namespace BenchmarkMapper.Resolver
             foreach (string item in stringProp)
                 res.Append(item);
 
-            return new StringProperties
+            return new StringProperties()
             {
                 value = res.ToString(),
                 length = res.Length,

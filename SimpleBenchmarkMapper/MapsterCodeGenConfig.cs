@@ -9,7 +9,7 @@ using System.Threading.Tasks;
 
 namespace SimpleBenchmarkMapper
 {
-    internal class MapsterConfig: ICodeGenerationRegister
+    internal class MapsterCodeGenConfig: ICodeGenerationRegister
     {
         public void Register(CodeGenerationConfig config)
         {
