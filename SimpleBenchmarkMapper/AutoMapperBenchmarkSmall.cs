@@ -10,11 +10,12 @@ namespace SimpleBenchmarkMapper
     [MemoryDiagnoser, Orderer(SummaryOrderPolicy.FastestToSlowest)]
     public class AutoMapperBenchmarkSmall
     {
-        [Params(10, 100)]
+        [Params(10)]
         public int numElements { get; set; }
         private IEnumerable<PortfolioSmall> portfoliosSmall { get; set; }
         private static readonly IMapper automapperSmall = new Mapper(new MapperConfiguration(z => z.AddProfile(new AutomapperProfileSmallPortfolio())));
         private static readonly IMapper automapperProfileSmall = new Mapper(new MapperConfiguration(z => z.AddProfile(new PortfolioProfileSmall())));
+        private static readonly IMapper automapperSmallRecord = new Mapper(new MapperConfiguration(z => z.AddProfile(new AutomapperProfileSmallPortfolioRecord())));
 
 
         public PortfolioSmall PortfolioSampleSmall()
@@ -43,6 +44,14 @@ namespace SimpleBenchmarkMapper
             }
         }
 
+        internal class AutomapperProfileSmallPortfolioRecord : Profile
+        {
+            public AutomapperProfileSmallPortfolioRecord()
+            {
+                CreateMap<PortfolioSmall, DtoPortfolioSmallNoAdapterRecord>();
+            }
+        }
+
         [Benchmark]
         public void AutoMapperPortfolioSmallNoAdapter()
         {
@@ -58,6 +67,24 @@ namespace SimpleBenchmarkMapper
             foreach (var p in portfoliosSmall)
             {
                 var pDto = automapperProfileSmall.Map<DtoPortfolioSmallWithAdapter>(p);
+            }
+        }
+
+        [Benchmark]
+        public void AutoMapperPortfolioSmallWithAdapterRecord()
+        {
+            foreach (var p in portfoliosSmall)
+            {
+                var pDto = automapperProfileSmall.Map<DtoPortfolioSmallWithAdapterRecord>(p);
+            }
+        }
+
+        [Benchmark]
+        public void AutoMapperPortfolioSmallNoAdapterRecord()
+        {
+            foreach (var p in portfoliosSmall)
+            {
+                var pDto = automapperSmallRecord.Map<DtoPortfolioSmallNoAdapterRecord>(p);
             }
         }
     }
