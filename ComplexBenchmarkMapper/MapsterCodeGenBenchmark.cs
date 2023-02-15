@@ -10,7 +10,7 @@ namespace BenchmarkMapper
     [MemoryDiagnoser, Orderer(SummaryOrderPolicy.FastestToSlowest)]
     public class MapsterCodeGenBenchmark
     {
-        [Params(10, 100, 1000)]
+        [Params(100)]
         public int numElements { get; set; }
         private IEnumerable<Portfolio> portfolios;
 
@@ -241,5 +241,18 @@ namespace BenchmarkMapper
                 var pDto = p.Adapt<PortfolioMap>().Adapt<DtoPortfolio>();
             }
         }
+
+
+        [Benchmark]
+        public void MapsterCodeGenPortfolioAndClass()
+        {
+            foreach (var p in portfolios)
+            {
+                var pMap = p.Adapt<PortfolioMap>();
+
+                var Dto = new DtoPortfolio(pMap);
+            }
+        }
+
     }
 }
