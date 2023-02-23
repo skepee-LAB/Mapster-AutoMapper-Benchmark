@@ -31,7 +31,7 @@ namespace SimpleBenchmarkMapper
                     cfg.Map(dest => dest.Code, "DtoCode");
                     cfg.Map(dest => dest.Name, "DtoName");
                     cfg.Map(dest => dest.Type, "DtoType");
-                    cfg.Map(dest => dest.Status, "DtoDtoStatus");
+                    cfg.Map(dest => dest.Status, "DtoStatus");
                     cfg.Map(dest => dest.Prop1, "DtoProp1");
                     cfg.Map(dest => dest.Prop2, "DtoProp2");
                     cfg.Map(dest => dest.Prop3, "DtoProp3");

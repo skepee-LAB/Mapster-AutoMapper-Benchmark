@@ -1,0 +1,66 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <OutputType>Exe</OutputType>
+    <TargetFramework>net6.0</TargetFramework>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <Nullable>enable</Nullable>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="AutoMapper" Version="12.0.0" />
+    <PackageReference Include="BenchmarkDotNet" Version="0.13.3" />
+    <PackageReference Include="Mapster" Version="7.3.0" />
+  </ItemGroup>
+
+    <Target Name="Mapster" AfterTargets="AfterBuild">
+	    <Exec WorkingDirectory="$(ProjectDir)" Command="dotnet tool restore" />
+	    <Exec WorkingDirectory="$(ProjectDir)" Command="dotnet mapster model -a &quot;$(TargetDir)$(ProjectName).dll&quot;" />
+	    <Exec WorkingDirectory="$(ProjectDir)" Command="dotnet mapster extension -a &quot;$(TargetDir)$(ProjectName).dll&quot;" />
+	    <Exec WorkingDirectory="$(ProjectDir)" Command="dotnet mapster mapper -a &quot;$(TargetDir)$(ProjectName).dll&quot;" />
+    </Target>
+
+	<ItemGroup>
+		<Generated Include="**\*.g.cs" />
+	</ItemGroup>
+
+	<ItemGroup>
+	  <Compile Remove="AutoMapperBenchmark.cs" />
+	  <Compile Remove="MappingBenchmark.cs" />
+	  <Compile Remove="MappingBenchmarkSamples.cs" />
+	  <Compile Remove="MapsterCodeGenBenchmark.cs" />
+	  <Compile Remove="MapsterConfig.cs" />
+	  <Compile Remove="PortfolioProfileBig.cs" />
+	  <Compile Remove="PortfolioProfileSmall.cs" />
+	</ItemGroup>
+
+	<ItemGroup>
+	  <None Remove="C:\Users\MARCE\.nuget\packages\microsoft.diagnostics.tracing.traceevent\3.0.2\buildTransitive\..\build\native\amd64\KernelTraceControl.dll" />
+	  <None Remove="C:\Users\MARCE\.nuget\packages\microsoft.diagnostics.tracing.traceevent\3.0.2\buildTransitive\..\build\native\amd64\msdia140.dll" />
+	  <None Remove="C:\Users\MARCE\.nuget\packages\microsoft.diagnostics.tracing.traceevent\3.0.2\buildTransitive\..\build\native\amd64\msvcp140.dll" />
+	  <None Remove="C:\Users\MARCE\.nuget\packages\microsoft.diagnostics.tracing.traceevent\3.0.2\buildTransitive\..\build\native\amd64\vcruntime140.dll" />
+	  <None Remove="C:\Users\MARCE\.nuget\packages\microsoft.diagnostics.tracing.traceevent\3.0.2\buildTransitive\..\build\native\amd64\vcruntime140_1.dll" />
+	  <None Remove="C:\Users\MARCE\.nuget\packages\microsoft.diagnostics.tracing.traceevent\3.0.2\buildTransitive\..\build\native\arm64\KernelTraceControl.dll" />
+	  <None Remove="C:\Users\MARCE\.nuget\packages\microsoft.diagnostics.tracing.traceevent\3.0.2\buildTransitive\..\build\native\arm64\msdia140.dll" />
+	  <None Remove="C:\Users\MARCE\.nuget\packages\microsoft.diagnostics.tracing.traceevent\3.0.2\buildTransitive\..\build\native\arm64\msvcp140.dll" />
+	  <None Remove="C:\Users\MARCE\.nuget\packages\microsoft.diagnostics.tracing.traceevent\3.0.2\buildTransitive\..\build\native\arm64\vcruntime140.dll" />
+	  <None Remove="C:\Users\MARCE\.nuget\packages\microsoft.diagnostics.tracing.traceevent\3.0.2\buildTransitive\..\build\native\arm64\vcruntime140_1.dll" />
+	  <None Remove="C:\Users\MARCE\.nuget\packages\microsoft.diagnostics.tracing.traceevent\3.0.2\buildTransitive\..\build\native\x86\KernelTraceControl.dll" />
+	  <None Remove="C:\Users\MARCE\.nuget\packages\microsoft.diagnostics.tracing.traceevent\3.0.2\buildTransitive\..\build\native\x86\KernelTraceControl.Win61.dll" />
+	  <None Remove="C:\Users\MARCE\.nuget\packages\microsoft.diagnostics.tracing.traceevent\3.0.2\buildTransitive\..\build\native\x86\msdia140.dll" />
+	  <None Remove="C:\Users\MARCE\.nuget\packages\microsoft.diagnostics.tracing.traceevent\3.0.2\buildTransitive\..\build\native\x86\msvcp140.dll" />
+	  <None Remove="C:\Users\MARCE\.nuget\packages\microsoft.diagnostics.tracing.traceevent\3.0.2\buildTransitive\..\build\native\x86\vcruntime140.dll" />
+	  <None Remove="C:\Users\MARCE\.nuget\packages\microsoft.diagnostics.tracing.traceevent\3.0.2\buildTransitive\..\lib\netstandard1.6\Dia2Lib.dll" />
+	  <None Remove="C:\Users\MARCE\.nuget\packages\microsoft.diagnostics.tracing.traceevent\3.0.2\buildTransitive\..\lib\netstandard1.6\OSExtensions.dll" />
+	  <None Remove="C:\Users\MARCE\.nuget\packages\microsoft.diagnostics.tracing.traceevent\3.0.2\buildTransitive\..\lib\netstandard1.6\TraceReloggerLib.dll" />
+	</ItemGroup>
+
+	<ItemGroup>
+	  <Folder Include="BenchmarkDotNet.Artifacts\" />
+	  <Folder Include="Models\" />
+	</ItemGroup>
+
+	<Target Name="CleanGenerated">
+		<Delete Files="@(Generated)" />
+	</Target>
+</Project>

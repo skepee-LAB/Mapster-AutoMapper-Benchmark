@@ -3,16 +3,19 @@ using BenchmarkMapper.Dto;
 using BenchmarkDotNet.Attributes;
 using BenchmarkDotNet.Order;
 using Mapster;
+using System.Text;
+using AutoMapper;
 
 namespace BenchmarkMapper
 {
     [Config(typeof(AntiVirusFriendlyConfig))]
     [MemoryDiagnoser, Orderer(SummaryOrderPolicy.FastestToSlowest)]
-    public class MapsterCodeGenBenchmark
+    public class BenchmarkWrongPerformance
     {
-        [Params(100)]
+        [Params(10, 100, 500)]
         public int numElements { get; set; }
         private IEnumerable<Portfolio> portfolios;
+        private static readonly IMapper automapper = new Mapper(new MapperConfiguration(z => z.AddProfile(new PortfolioProfile())));
 
         public Portfolio PortfolioSample()
         {
@@ -232,27 +235,95 @@ namespace BenchmarkMapper
             portfolios = Enumerable.Range(1, numElements).Select(x => PortfolioSample());
         }
 
-
         [Benchmark]
-        public void MapsterCodeGenPortfolio()
+        public void MapsterPortfolioElaborationInMapping()
         {
             foreach (var p in portfolios)
             {
-                var pDto = p.Adapt<PortfolioMap>().Adapt<DtoPortfolio>();
+                var pDto = p.Adapt<DtoPortfolio>(GetTypeAdapterConfig());
             }
         }
 
-
         [Benchmark]
-        public void MapsterCodeGenPortfolioAndClass()
+        public void MapsterPortfolioElaborationOutsideMapping()
         {
             foreach (var p in portfolios)
             {
-                var pMap = p.Adapt<PortfolioMap>();
-
-                var Dto = new DtoPortfolio(pMap);
+                var pDto = p.Adapt<DtoPortfolio>();
+                pDto.GroupDateTimeProperties = CalculateDateTimeOperation(new List<DateTime> { p.Prop151, p.Prop152, p.Prop153, p.Prop154, p.Prop155, p.Prop156, p.Prop157, p.Prop158, p.Prop159, p.Prop160, p.Prop161, p.Prop162, p.Prop163, p.Prop164, p.Prop165, p.Prop166, p.Prop167, p.Prop168, p.Prop169, p.Prop170, p.Prop171, p.Prop172, p.Prop173, p.Prop174, p.Prop175, p.Prop176, p.Prop177, p.Prop178, p.Prop179, p.Prop180, p.Prop181, p.Prop182, p.Prop183, p.Prop184, p.Prop185, p.Prop186, p.Prop187, p.Prop188, p.Prop189, p.Prop190, p.Prop191, p.Prop192, p.Prop193, p.Prop194, p.Prop195, p.Prop196, p.Prop197, p.Prop198, p.Prop199, p.Prop190, p.Prop200 });
+                pDto.GroupDecimalProperties = CalculateDecimalOperation(p);
+                pDto.GroupIntProperties = CalculateIntOperation(new int[] { p.Prop51, p.Prop52, p.Prop53, p.Prop54, p.Prop55, p.Prop56, p.Prop57, p.Prop58, p.Prop59, p.Prop60, p.Prop61, p.Prop62, p.Prop63, p.Prop64, p.Prop65, p.Prop66, p.Prop67, p.Prop68, p.Prop69, p.Prop71, p.Prop72, p.Prop73, p.Prop74, p.Prop75, p.Prop76, p.Prop77, p.Prop78, p.Prop79, p.Prop80, p.Prop81, p.Prop82, p.Prop83, p.Prop84, p.Prop85, p.Prop86, p.Prop87, p.Prop88, p.Prop89, p.Prop90, p.Prop91, p.Prop92, p.Prop93, p.Prop94, p.Prop95, p.Prop96, p.Prop97, p.Prop98, p.Prop99, p.Prop100 });
+                pDto.GroupStringProperties = CalculateStringOperation(new List<string> { p.Prop1, p.Prop2, p.Prop3, p.Prop4, p.Prop5, p.Prop6, p.Prop7, p.Prop8, p.Prop9, p.Prop10, p.Prop11, p.Prop12, p.Prop13, p.Prop14, p.Prop15, p.Prop16, p.Prop17, p.Prop18, p.Prop19, p.Prop20, p.Prop21, p.Prop22, p.Prop23, p.Prop24, p.Prop25, p.Prop26, p.Prop27, p.Prop28, p.Prop29, p.Prop30, p.Prop31, p.Prop32, p.Prop33, p.Prop34, p.Prop35, p.Prop36, p.Prop37, p.Prop38, p.Prop39, p.Prop40, p.Prop41, p.Prop42, p.Prop43, p.Prop44, p.Prop45, p.Prop46, p.Prop47, p.Prop48, p.Prop49, p.Prop50 });
             }
         }
 
+        [Benchmark]
+        public void AutoMapperPortfolio()
+        {
+            foreach (var p in portfolios)
+            {
+                var pDto = automapper.Map<DtoPortfolio>(p);
+            }
+        }
+
+        public static TypeAdapterConfig GetTypeAdapterConfig()
+        {
+            var config = new TypeAdapterConfig();
+            config.NewConfig<Portfolio, DtoPortfolio>()
+                .Map(dest => dest.DtoId, src => src.Id)
+                .Map(dest => dest.DtoCode, src => src.Code)
+                .Map(dest => dest.DtoName, src => src.Name)
+                .Map(dest => dest.DtoType, src => src.Type)
+                .Map(dest => dest.DtoStatus, src => src.Status)
+                .Map(dest => dest.GroupStringProperties, src => CalculateStringOperation(new List<string> { src.Prop1, src.Prop2, src.Prop3, src.Prop4, src.Prop5, src.Prop6, src.Prop7, src.Prop8, src.Prop9, src.Prop10, src.Prop11, src.Prop12, src.Prop13, src.Prop14, src.Prop15, src.Prop16, src.Prop17, src.Prop18, src.Prop19, src.Prop20, src.Prop21, src.Prop22, src.Prop23, src.Prop24, src.Prop25, src.Prop26, src.Prop27, src.Prop28, src.Prop29, src.Prop30, src.Prop31, src.Prop32, src.Prop33, src.Prop34, src.Prop35, src.Prop36, src.Prop37, src.Prop38, src.Prop39, src.Prop40, src.Prop41, src.Prop42, src.Prop43, src.Prop44, src.Prop45, src.Prop46, src.Prop47, src.Prop48, src.Prop49, src.Prop50 }))
+                .Map(dest => dest.GroupIntProperties, src => CalculateIntOperation(new int[] { src.Prop51, src.Prop52, src.Prop53, src.Prop54, src.Prop55, src.Prop56, src.Prop57, src.Prop58, src.Prop59, src.Prop60, src.Prop61, src.Prop62, src.Prop63, src.Prop64, src.Prop65, src.Prop66, src.Prop67, src.Prop68, src.Prop69, src.Prop71, src.Prop72, src.Prop73, src.Prop74, src.Prop75, src.Prop76, src.Prop77, src.Prop78, src.Prop79, src.Prop80, src.Prop81, src.Prop82, src.Prop83, src.Prop84, src.Prop85, src.Prop86, src.Prop87, src.Prop88, src.Prop89, src.Prop90, src.Prop91, src.Prop92, src.Prop93, src.Prop94, src.Prop95, src.Prop96, src.Prop97, src.Prop98, src.Prop99, src.Prop100 }))
+                .Map(dest => dest.GroupDecimalProperties, src => CalculateDecimalOperation(src))
+                .Map(dest => dest.GroupDateTimeProperties, src => CalculateDateTimeOperation(new List<DateTime> { src.Prop151, src.Prop152, src.Prop153, src.Prop154, src.Prop155, src.Prop156, src.Prop157, src.Prop158, src.Prop159, src.Prop160, src.Prop161, src.Prop162, src.Prop163, src.Prop164, src.Prop165, src.Prop166, src.Prop167, src.Prop168, src.Prop169, src.Prop170, src.Prop171, src.Prop172, src.Prop173, src.Prop174, src.Prop175, src.Prop176, src.Prop177, src.Prop178, src.Prop179, src.Prop180, src.Prop181, src.Prop182, src.Prop183, src.Prop184, src.Prop185, src.Prop186, src.Prop187, src.Prop188, src.Prop189, src.Prop190, src.Prop191, src.Prop192, src.Prop193, src.Prop194, src.Prop195, src.Prop196, src.Prop197, src.Prop198, src.Prop199, src.Prop190, src.Prop200 }));
+            return config;
+        }
+
+
+        private static StringProperties CalculateStringOperation(List<string> listStrings)
+        {
+            var res = new StringBuilder();
+            foreach (string item in listStrings)
+                res.Append(item);
+
+            return new StringProperties
+            {
+                value = res.ToString(),
+                length = res.Length,
+                numWords = listStrings.Count
+            };
+        }
+
+        private static DateTimeProperties CalculateDateTimeOperation(List<DateTime> dateTimeSrcValues)
+        {
+            return new DateTimeProperties
+            {
+                minValue = dateTimeSrcValues.Min(),
+                maxValue = dateTimeSrcValues.Max()
+            };
+        }
+
+        private static IntProperties CalculateIntOperation(int[] srcIntValues)
+        {
+            return new IntProperties
+            {
+                minValue = srcIntValues.Min(),
+                maxValue = srcIntValues.Max(),
+                avgValue = srcIntValues.Average()
+            };
+        }
+
+        private static DecimalProperties CalculateDecimalOperation(Portfolio src)
+        {
+            return new DecimalProperties
+            {
+                minValue = new decimal[] { src.Prop101, src.Prop102, src.Prop103, src.Prop104, src.Prop105, src.Prop106, src.Prop107, src.Prop108, src.Prop109, src.Prop110 }.Min(),
+                maxValue = new decimal[] { src.Prop111, src.Prop112, src.Prop113, src.Prop114, src.Prop115, src.Prop116, src.Prop117, src.Prop118, src.Prop119, src.Prop120 }.Max(),
+                avgValue = new decimal[] { src.Prop121, src.Prop122, src.Prop123, src.Prop124, src.Prop125, src.Prop126, src.Prop127, src.Prop128, src.Prop129, src.Prop130, src.Prop131, src.Prop132, src.Prop133, src.Prop134, src.Prop135, src.Prop136, src.Prop137, src.Prop138, src.Prop139, src.Prop140, src.Prop141, src.Prop142, src.Prop143, src.Prop144, src.Prop145, src.Prop146, src.Prop147, src.Prop148, src.Prop149, src.Prop150 }.Average()
+            };
+        }
     }
 }

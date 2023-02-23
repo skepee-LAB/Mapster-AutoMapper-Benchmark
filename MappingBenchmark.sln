@@ -3,19 +3,19 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.4.33205.214
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ComplexWebApiMapster", "ComplexWebApiMapster\ComplexWebApiMapster.csproj", "{7B4F358C-9E71-46B8-BB4A-E2F2DADD614F}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "UnflattenedWebApiMapster", "UnflattenedWebApiMapster\UnflattenedWebApiMapster.csproj", "{7B4F358C-9E71-46B8-BB4A-E2F2DADD614F}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ComplexWebApiMapsterCodeGen", "ComplexWebApiMapsterCodeGen\ComplexWebApiMapsterCodeGen.csproj", "{10995730-7129-4D83-B1AD-14A5078B88F1}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "UnflattenedWebApiMapsterCodeGen", "UnflattenedWebApiMapsterCodeGen\UnflattenedWebApiMapsterCodeGen.csproj", "{10995730-7129-4D83-B1AD-14A5078B88F1}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ComplexBenchmarkMapper", "ComplexBenchmarkMapper\ComplexBenchmarkMapper.csproj", "{5CF28427-0B26-433F-ABA9-E349490BAA0A}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "UnflattenedBenchmarkMapper", "UnflattenedBenchmarkMapper\UnflattenedBenchmarkMapper.csproj", "{5CF28427-0B26-433F-ABA9-E349490BAA0A}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ComplexWebApiAutoMapper", "ComplexWebApiAutoMapper\ComplexWebApiAutoMapper.csproj", "{6A7A4748-EC95-484C-A423-4E92FB917E96}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "UnflattenedWebApiAutoMapper", "UnflattenedWebApiAutoMapper\UnflattenedWebApiAutoMapper.csproj", "{6A7A4748-EC95-484C-A423-4E92FB917E96}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SimpleBenchmarkMapper", "SimpleBenchmarkMapper\SimpleBenchmarkMapper.csproj", "{6D54F033-2438-427D-8460-4882BD056931}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BenchmarkMapper", "SimpleBenchmarkMapper\BenchmarkMapper.csproj", "{6D54F033-2438-427D-8460-4882BD056931}"
 EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "SimpleMapping", "SimpleMapping", "{2160D2F1-B0EC-4CA2-B5EE-D8F779D1F0A2}"
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Mapping", "Mapping", "{2160D2F1-B0EC-4CA2-B5EE-D8F779D1F0A2}"
 EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "ComplexMapping", "ComplexMapping", "{3D91E0A4-9F70-4E4F-88A0-A702D3C79136}"
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "UnflattenedMapping", "UnflattenedMapping", "{3D91E0A4-9F70-4E4F-88A0-A702D3C79136}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

@@ -236,7 +236,7 @@ namespace SimpleBenchmarkMapper
         {
             foreach (var p in portfolios)
             {
-                var pDto = p.Adapt<PortfolioBigMap>();
+               //var pDto = p.Adapt<PortfolioBigMap>();
             }
         }
 
@@ -245,7 +245,7 @@ namespace SimpleBenchmarkMapper
         {
             foreach (var p in portfolios)
             {
-                var pDto = p.Adapt<PortfolioBigMap>();
+              //  var pDto = p.Adapt<PortfolioBigMap>();
             }
         }
     }
