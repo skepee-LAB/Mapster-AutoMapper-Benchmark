@@ -6,5 +6,5 @@ Console.WriteLine("Benchmark Mapster Portfolio");
 var summaryMapster = BenchmarkRunner.Run<BenchmarkUnflattened>();
 
 Console.WriteLine("Benchmark Mapster Elaboration Wrong Performance");
-//var summaryMapsterWrong = BenchmarkRunner.Run<BenchmarkWrongPerformance>();
+var summaryMapsterWrong = BenchmarkRunner.Run<BenchmarkWrongPerformance>();
 

@@ -15,7 +15,7 @@ namespace BenchmarkMapper
         [Params(10, 100, 500)]
         public int numElements { get; set; }
         private IEnumerable<Portfolio> portfolios;
-        private static readonly IMapper automapper = new Mapper(new MapperConfiguration(z => z.AddProfile(new PortfolioProfile())));
+        private static readonly IMapper automapper = new Mapper(new MapperConfiguration(z => z.AddProfile(new PortfolioProfileWrongPerfomance())));
 
         public Portfolio PortfolioSample()
         {
