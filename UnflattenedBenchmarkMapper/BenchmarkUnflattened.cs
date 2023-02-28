@@ -251,7 +251,7 @@ namespace BenchmarkMapper
         {
             foreach (var p in portfolios)
             {
-                var pDto = automapper.Map<PortfolioUnflattened>(p);
+                var pDto = automapper.Map<DtoPortfolioUnflattened>(p);
             }
         }
 

@@ -35,6 +35,7 @@ namespace SimpleBenchmarkMapper
         public void MapsterCodeGenPortfolioSmallNoAdapter()
         {
             foreach (var p in portfolios)
+
             {
                 var pDto = p.Adapt<PortfolioSmallMap>();
             }
