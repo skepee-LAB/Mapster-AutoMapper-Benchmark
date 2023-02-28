@@ -1,11 +1,11 @@
 # Mapster - AutoMapper
 
 ## Introduction
-This is an analysis of the use of the two most famous mapping tools: [Automapper](#https://github.com/AutoMapper/AutoMapper) and [Mapster](#https://github.com/MapsterMapper/Mapster). We will show some benchmarks in two different types:
+This is an analysis of the use of the two most famous mapping tools: [Automapper](https://github.com/AutoMapper/AutoMapper) and [Mapster](https://github.com/MapsterMapper/Mapster). We will show some benchmarks in two different types:
 
-- base code tested by using [BenchmarkDotNet](#https://github.com/dotnet/BenchmarkDotNet).
+- base code tested by using [BenchmarkDotNet](https://github.com/dotnet/BenchmarkDotNet).
 
-- a real use case with a WebApi endpoint by using [Benchmark Rest](#https://github.com/skepee-PROTOTYPE/Benchmark-Rest-Api). 
+- a real use case with a WebApi endpoint by using [Benchmark Rest](https://github.com/skepee-PROTOTYPE/Benchmark-Rest-Api). 
 
 
 ## Automapper
@@ -178,27 +178,6 @@ Here a summary of different cases:
 </tr>
 </table>
 
-
-<!-- <table>
-<tr>
-    <th colspan=5 style="alignment:middle">BenchMark Rest (WebApi)</th>
-</tr>
-<tr>
-    <th>Type</th>
-    <th>Description</th>
-    <th>Automapper</th>
-    <th>Mapster</th>
-    <th>MapsterCodeGen</th>
-</tr>
-<tr>
-    <td><em>Complex</em></td>
-    <td>operations</td>
-    <td><span>&#10003;</span></td>
-    <td><span>&#10003;</span></td>
-    <td><span>&#10003;</span></td>
-</tr>
-</table> -->
-
 # Test cases
 Because there are different cases and combinations, by showing all these results in one shot is not helpful, so we go step by step.
 ## Simple case
@@ -215,7 +194,7 @@ The simple case regards a one-to-one mapping with a Dto with just five fields:
     }
 ```
 
-## unflattened case
+## Unflattened case
 The unflattened case regards a mapping with nested objects:
 
 ```cs
@@ -272,7 +251,7 @@ The unflattened case regards a mapping with nested objects:
 ## BenchmarkDotNet results
 Now let us go to run the benchmarks for these cases by using ```AutoMapper``` and ```Mapster```.
 
-The benchmark considers a list of portfolios of ````10```, ```100``` and ```1000``` size. How to do that?
+The benchmark considers a list of portfolios of ```10```, ```100``` and ```1000``` size. How to do that?
 
 By adding an annotation on the size property, we can parameterize the benchmark. So for each type of benchmark we will consider a list portfolios with length ```10```, ```100``` or ```1000```.
 
@@ -286,7 +265,7 @@ By adding an annotation on the size property, we can parameterize the benchmark.
 | :---             | ----------- | ----------- | ---------- |
 |   AutoMapper     |       100   | 10.688      | 10.98 KB  |
 |   Mapster        |       100   | 4.997       | 10.98 KB  | 
-|   MapsterCodeGen |       100   | <span style="color:yellow"> 4.471</span>    | 1.7929  | 0.0644 |  10.98 KB   |
+|   MapsterCodeGen |       100   | <code style="color:yellow"> 4.471</code>    | 1.7929  | 0.0644 |  10.98 KB   |
 
 In the mapping one-to-one for a list of ```100``` portfolios with the same allocation memory <strong>Mapster CodeGen</strong> is more performing.
 
@@ -298,7 +277,7 @@ In the mapping one-to-one for a list of ```100``` portfolios with the same alloc
 |----------- |------------ |----------:|---------: |
 | AutoMapper |         100 |  9.761    | 10.98 KB   |
 | Mapster    |         100 | 4.622     | 10.98 KB |
-| MapsterCodeGen |         100 | <span style="color:yellow">4.407</span> |10.98 KB |
+| MapsterCodeGen |         100 | <code style="color : yellow">4.407</code>|10.98 KB |
 
 Also in this case in the mapping one-to-one for a list of ```100``` portfolios with the same allocation memory <strong>Mapster CodeGen</strong> is more performing.
 Futhermore, as we can see, there is no much difference between ```Adapter``` and ```No Adapter``` scenario.
@@ -307,54 +286,39 @@ The use of Adapter then is clearly suggested only for situations where the ```Dt
 
 <strong>Unflattened Portfolio - No Adapter</strong>
 
-|                     Method | numElements |        Mean |  Allocated |
-|--------------------------- |------------ |------------:|-----------:|
-|                AutoMapper  |          10 |    109.3 us |   19.11 KB |
-|        MapsterUnflattened  |          10 |    111.4 us |   38.17 KB |
-| MapsterUnflattenedCodeGen  |          10 |    116.7 us |   38.17 KB |
-|                AutoMapper  |         100 |  1,088.4 us |  190.67 KB |
-|        MapsterUnflattened  |         100 |  1,113.1 us |   381.3 KB |
-| MapsterUnflattenedCodeGen  |         100 |  1,129.9 us |   381.3 KB |
-|                AutoMapper  |        1000 | 10,902.5 us | 1906.31 KB |
-|        MapsterUnflattened  |        1000 | 11,177.8 us | 3812.56 KB |
-| MapsterUnflattenedCodeGen  |        1000 | 11,180.6 us | 3812.56 KB |
 
-<!-- | Method | numElements |       Mean |Allocated |
-|--------|------------ |-----------:|----------:|
-| AutoMapper |         100 |  1,270.9 μs | 362.55 KB |
-| Mapster |         100 |  1,104.4 μs |362.55 KB |
-| MapsterCodeGen |         100 |  <span style="color:yellow">1,078.3 μs</span>  |362.55 KB | -->
+|         Method | numElements |        Mean |  Allocated   |
+|--------------- |------------ |------------:|------------: |
+|        Mapster |          10 |    109.1 μs |   38.17 KB   |
+| MapsterCodeGen |          10 |    109.5 μs |   38.17 KB   |
+|     AutoMapper |          10 |    126.6 μs |   38.17 KB   |
+|        Mapster |         100 |  1,086.9 μs |   381.3 KB   |
+| MapsterCodeGen |         100 |  1,093.7 μs |   381.3 KB   |
+|     AutoMapper |         100 |  1,255.0 μs |   381.3 KB   |
+|        Mapster |        1000 | 10,978.2 μs |   3812.56 KB |
+| MapsterCodeGen |        1000 | 11,067.4 μs |   3812.56 KB |
+|     AutoMapper |        1000 | 12,680.4 μs |   3812.56 KB |
 
-<!-- Here we are considering a list of ```100``` portfolios where each portfolio contains ```205``` fields.
-The results confirm the above considerations.
-
-
-|    Method      | numElements |     Mean |Allocated |
-|--------------- |------------ |---------:|----------:|
-| MapsterCodeGen |         100 | 1.114 ms |371.14 KB |
-| Mapster        |         100 | 1.142 s |  79.75 MB |
-| AutoMapper     |         100 | 1.077 ms |  189.89 KB |
-| MapsterCodeGenAndClass |         100 | 1.468 ms | 964.89 KB | -->
-
+Also in this case Mapster confirms a better performance than AutoMapper with the same allocation memory.
 
 
 # Can we do better?
 
 This is a question that we should ask <ins><strong>always</strong></ins> to ourselves, we cannot never say never...
-From C# 9 we can use [record types](#https://learn.microsoft.com/en-us/dotnet/csharp/whats-new/tutorials/records).
+From C# 9 we can use [record types](https://learn.microsoft.com/en-us/dotnet/csharp/whats-new/tutorials/records).
 
 
 > C# 9 introduces records, a new reference type that you can create instead of classes or structs. C# 10 adds record structs so that you can define records as value types. Records are distinct from classes in that  record types use value-based equality. Two variables of a record type are equal if the record type definitions are identical, and if for every field, the values in both records are equal. Two variables of a class type are equal if the objects referred to are the same class type and the variables refer to the same object. Value-based equality implies other capabilities you'll probably want in record types. The compiler generates many of those members when you declare a record instead of a class. The compiler generates those same methods for record struct types.
 
 
-and [here](#https://learn.microsoft.com/en-us/dotnet/csharp/language-reference/builtin-types/record):
+and [here](https://learn.microsoft.com/en-us/dotnet/csharp/language-reference/builtin-types/record):
 
 
 > Beginning with C# 9, you use the record keyword to define a reference type that provides built-in functionality for encapsulating data. C# 10 allows the record class syntax as a synonym to clarify a reference type, and record struct to define a value type with similar functionality. You can create record types with immutable properties by using positional parameters or standard property syntax.
 
 
 What happen by using a record struct istead of a class?
-We are telling to the commpiler to generate value based type instead of reference types.
+We are telling to the compiler to generate value based type instead of reference types.
 
 
 
@@ -366,7 +330,7 @@ AutoMapper With Adapter - comparing with struct
 
 |                                    Method | numElements |       Mean | Allocated |
 |------------------------------------------ |------------ |-----------:|----------:|
-| AutoMapper-WithAdapterRecord |        1000 |  <span style="color:yellow">98.373 μs</span> |  56048 B |
+| AutoMapper-WithAdapterRecord |        1000 | <code style="color : yellow">98.373 μs</code> |  56048 B |
 |       AutoMapper-WithAdapter |        1000 | 102.138 μs | 112048 B |
 |         AutoMapper-NoAdapter |        1000 | 103.403 μs |  112048 B |
 |   AutoMapper-NoAdapterRecord |        1000 | 103.480 μs |   56048 B |
