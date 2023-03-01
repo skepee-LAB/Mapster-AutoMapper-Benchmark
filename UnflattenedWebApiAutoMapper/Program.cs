@@ -1,7 +1,6 @@
 using Microsoft.EntityFrameworkCore;
 using WebApiAutoMapper;
 using WebApiAutoMapper.Services;
-using WebApiAutoMapper.Resolver;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -14,7 +13,6 @@ builder.Services.AddSwaggerGen();
 builder.Services.AddDbContext<MyContext>(options => options.UseSqlServer(builder.Configuration.GetConnectionString("local")));
 builder.Services.AddScoped<IPortfolioRepository, PortfolioRepository>();
 builder.Services.AddAutoMapper(AppDomain.CurrentDomain.GetAssemblies());
-builder.Services.AddTransient<PortfolioResolver>();
 
 var app = builder.Build();
 

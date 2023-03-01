@@ -1,68 +1,80 @@
-﻿using System;
-using System.ComponentModel.DataAnnotations;
+﻿using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 
 namespace WebApiAutoMapper.Model
 {
-    [Table("portfolioBig")]
-    public class portfolio
+   [Table("portfolio")]
+    public class Portfolio
     {
         [Key]
+        public int PortfolioId { get; set; }
+        public string PortfolioCode { get; set; }
+        public string PortfolioName { get; set; }
+        public string PortfolioType { get; set; }
+        public string PortfolioStatus { get; set; }
+    }
+
+    [Table("decimalProperties")]
+    public class DecimalProperties
+    {
         public int Id { get; set; }
-        public string Code { get; set; }
-        public string Name { get; set; }
-        public string Type { get; set; }
-        public string Status { get; set; }
-        public string Prop1 { get; set; }
-        public string Prop2 { get; set; }
-        public string Prop3 { get; set; }
-        public string Prop4 { get; set; }
-        public string Prop5 { get; set; }
-        public string Prop6 { get; set; }
-        public string Prop7 { get; set; }
-        public string Prop8 { get; set; }
-        public string Prop9 { get; set; }
-        public string Prop10 { get; set; }
-        public string Prop11 { get; set; }
-        public string Prop12 { get; set; }
-        public string Prop13 { get; set; }
-        public string Prop14 { get; set; }
-        public string Prop15 { get; set; }
-        public string Prop16 { get; set; }
-        public string Prop17 { get; set; }
-        public string Prop18 { get; set; }
-        public string Prop19 { get; set; }
-        public string Prop20 { get; set; }
-        public string Prop21 { get; set; }
-        public string Prop22 { get; set; }
-        public string Prop23 { get; set; }
-        public string Prop24 { get; set; }
-        public string Prop25 { get; set; }
-        public string Prop26 { get; set; }
-        public string Prop27 { get; set; }
-        public string Prop28 { get; set; }
-        public string Prop29 { get; set; }
-        public string Prop30 { get; set; }
-        public string Prop31 { get; set; }
-        public string Prop32 { get; set; }
-        public string Prop33 { get; set; }
-        public string Prop34 { get; set; }
-        public string Prop35 { get; set; }
-        public string Prop36 { get; set; }
-        public string Prop37 { get; set; }
-        public string Prop38 { get; set; }
-        public string Prop39 { get; set; }
-        public string Prop40 { get; set; }
-        public string Prop41 { get; set; }
-        public string Prop42 { get; set; }
-        public string Prop43 { get; set; }
-        public string Prop44 { get; set; }
-        public string Prop45 { get; set; }
-        public string Prop46 { get; set; }
-        public string Prop47 { get; set; }
-        public string Prop48 { get; set; }
-        public string Prop49 { get; set; }
-        public string Prop50 { get; set; }
+        public decimal Prop101 { get; set; }
+        public decimal Prop102 { get; set; }
+        public decimal Prop103 { get; set; }
+        public decimal Prop104 { get; set; }
+        public decimal Prop105 { get; set; }
+        public decimal Prop106 { get; set; }
+        public decimal Prop107 { get; set; }
+        public decimal Prop108 { get; set; }
+        public decimal Prop109 { get; set; }
+        public decimal Prop110 { get; set; }
+        public decimal Prop111 { get; set; }
+        public decimal Prop112 { get; set; }
+        public decimal Prop113 { get; set; }
+        public decimal Prop114 { get; set; }
+        public decimal Prop115 { get; set; }
+        public decimal Prop116 { get; set; }
+        public decimal Prop117 { get; set; }
+        public decimal Prop118 { get; set; }
+        public decimal Prop119 { get; set; }
+        public decimal Prop120 { get; set; }
+        public decimal Prop121 { get; set; }
+        public decimal Prop122 { get; set; }
+        public decimal Prop123 { get; set; }
+        public decimal Prop124 { get; set; }
+        public decimal Prop125 { get; set; }
+        public decimal Prop126 { get; set; }
+        public decimal Prop127 { get; set; }
+        public decimal Prop128 { get; set; }
+        public decimal Prop129 { get; set; }
+        public decimal Prop130 { get; set; }
+        public decimal Prop131 { get; set; }
+        public decimal Prop132 { get; set; }
+        public decimal Prop133 { get; set; }
+        public decimal Prop134 { get; set; }
+        public decimal Prop135 { get; set; }
+        public decimal Prop136 { get; set; }
+        public decimal Prop137 { get; set; }
+        public decimal Prop138 { get; set; }
+        public decimal Prop139 { get; set; }
+        public decimal Prop140 { get; set; }
+        public decimal Prop141 { get; set; }
+        public decimal Prop142 { get; set; }
+        public decimal Prop143 { get; set; }
+        public decimal Prop144 { get; set; }
+        public decimal Prop145 { get; set; }
+        public decimal Prop146 { get; set; }
+        public decimal Prop147 { get; set; }
+        public decimal Prop148 { get; set; }
+        public decimal Prop149 { get; set; }
+        public decimal Prop150 { get; set; }
+
+    }
+
+    [Table("intProperties")]
+    public class IntProperties
+    {
+        public int Id { get; set; }
         public int Prop51 { get; set; }
         public int Prop52 { get; set; }
         public int Prop53 { get; set; }
@@ -113,56 +125,68 @@ namespace WebApiAutoMapper.Model
         public int Prop98 { get; set; }
         public int Prop99 { get; set; }
         public int Prop100 { get; set; }
-        public Decimal Prop101 { get; set; }
-        public Decimal Prop102 { get; set; }
-        public Decimal Prop103 { get; set; }
-        public Decimal Prop104 { get; set; }
-        public Decimal Prop105 { get; set; }
-        public Decimal Prop106 { get; set; }
-        public Decimal Prop107 { get; set; }
-        public Decimal Prop108 { get; set; }
-        public Decimal Prop109 { get; set; }
-        public Decimal Prop110 { get; set; }
-        public Decimal Prop111 { get; set; }
-        public Decimal Prop112 { get; set; }
-        public Decimal Prop113 { get; set; }
-        public Decimal Prop114 { get; set; }
-        public Decimal Prop115 { get; set; }
-        public Decimal Prop116 { get; set; }
-        public Decimal Prop117 { get; set; }
-        public Decimal Prop118 { get; set; }
-        public Decimal Prop119 { get; set; }
-        public Decimal Prop120 { get; set; }
-        public Decimal Prop121 { get; set; }
-        public Decimal Prop122 { get; set; }
-        public Decimal Prop123 { get; set; }
-        public Decimal Prop124 { get; set; }
-        public Decimal Prop125 { get; set; }
-        public Decimal Prop126 { get; set; }
-        public Decimal Prop127 { get; set; }
-        public Decimal Prop128 { get; set; }
-        public Decimal Prop129 { get; set; }
-        public Decimal Prop130 { get; set; }
-        public Decimal Prop131 { get; set; }
-        public Decimal Prop132 { get; set; }
-        public Decimal Prop133 { get; set; }
-        public Decimal Prop134 { get; set; }
-        public Decimal Prop135 { get; set; }
-        public Decimal Prop136 { get; set; }
-        public Decimal Prop137 { get; set; }
-        public Decimal Prop138 { get; set; }
-        public Decimal Prop139 { get; set; }
-        public Decimal Prop140 { get; set; }
-        public Decimal Prop141 { get; set; }
-        public Decimal Prop142 { get; set; }
-        public Decimal Prop143 { get; set; }
-        public Decimal Prop144 { get; set; }
-        public Decimal Prop145 { get; set; }
-        public Decimal Prop146 { get; set; }
-        public Decimal Prop147 { get; set; }
-        public Decimal Prop148 { get; set; }
-        public Decimal Prop149 { get; set; }
-        public Decimal Prop150 { get; set; }
+    }
+
+    [Table("stringProperties")]
+    public class StringProperties
+    {
+        public int Id { get; set; }
+        public string Prop1 { get; set; }
+        public string Prop2 { get; set; }
+        public string Prop3 { get; set; }
+        public string Prop4 { get; set; }
+        public string Prop5 { get; set; }
+        public string Prop6 { get; set; }
+        public string Prop7 { get; set; }
+        public string Prop8 { get; set; }
+        public string Prop9 { get; set; }
+        public string Prop10 { get; set; }
+        public string Prop11 { get; set; }
+        public string Prop12 { get; set; }
+        public string Prop13 { get; set; }
+        public string Prop14 { get; set; }
+        public string Prop15 { get; set; }
+        public string Prop16 { get; set; }
+        public string Prop17 { get; set; }
+        public string Prop18 { get; set; }
+        public string Prop19 { get; set; }
+        public string Prop20 { get; set; }
+        public string Prop21 { get; set; }
+        public string Prop22 { get; set; }
+        public string Prop23 { get; set; }
+        public string Prop24 { get; set; }
+        public string Prop25 { get; set; }
+        public string Prop26 { get; set; }
+        public string Prop27 { get; set; }
+        public string Prop28 { get; set; }
+        public string Prop29 { get; set; }
+        public string Prop30 { get; set; }
+        public string Prop31 { get; set; }
+        public string Prop32 { get; set; }
+        public string Prop33 { get; set; }
+        public string Prop34 { get; set; }
+        public string Prop35 { get; set; }
+        public string Prop36 { get; set; }
+        public string Prop37 { get; set; }
+        public string Prop38 { get; set; }
+        public string Prop39 { get; set; }
+        public string Prop40 { get; set; }
+        public string Prop41 { get; set; }
+        public string Prop42 { get; set; }
+        public string Prop43 { get; set; }
+        public string Prop44 { get; set; }
+        public string Prop45 { get; set; }
+        public string Prop46 { get; set; }
+        public string Prop47 { get; set; }
+        public string Prop48 { get; set; }
+        public string Prop49 { get; set; }
+        public string Prop50 { get; set; }
+    }
+
+    [Table("datetimeProperties")]
+    public class DateTimeProperties
+    {
+        public int Id { get; set; }
         public DateTime Prop151 { get; set; }
         public DateTime Prop152 { get; set; }
         public DateTime Prop153 { get; set; }

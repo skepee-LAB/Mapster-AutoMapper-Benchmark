@@ -1,5 +1,4 @@
 ﻿using Microsoft.AspNetCore.Mvc;
-using WebApiAutoMapper.Model;
 using WebApiAutoMapper.Services;
 
 namespace WebApiAutoMapper.Controllers
