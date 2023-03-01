@@ -30,24 +30,27 @@ namespace WebApiAutoMapper.Services
 
         public IEnumerable<DtoPortfolioFull> GetPortfolios()
         {
+            var res = new List<DtoPortfolioFull>();
+
             var portfolio = _mapper.Map<List<DtoPortfolio>>(_myContext.portfolio);
             var dateTimeProperties = _mapper.Map<List<DtoDateTimeProperties>>(_myContext.dateTimeProperties);
-            var stringProperties = _mapper.Map<DtoStringProperties>(_myContext.stringProperties);
-            var decimalProperties = _mapper.Map<DtoDecimalProperties>(_myContext.decimalProperties);
-            var intProperties = _mapper.Map<DtoIntProperties>(_myContext.intProperties);
+            var stringProperties = _mapper.Map<List<DtoStringProperties>>(_myContext.stringProperties);
+            var decimalProperties = _mapper.Map<List<DtoDecimalProperties>>(_myContext.decimalProperties);
+            var intProperties = _mapper.Map<List<DtoIntProperties>>(_myContext.intProperties);
 
-
-            return new List<DtoPortfolioFull>
+            foreach (DtoPortfolio p in portfolio)
             {
-                new DtoPortfolioFull
+                res.Add(new DtoPortfolioFull()
                 {
-                    portfolio =_mapper.Map<DtoPortfolio>(_myContext.portfolio),
-                    dateTimeProperties = _mapper.Map<DtoDateTimeProperties>(_myContext.dateTimeProperties),
-                    stringProperties = _mapper.Map<DtoStringProperties>(_myContext.stringProperties),
-                    decimalProperties = _mapper.Map<DtoDecimalProperties>(_myContext.decimalProperties),
-                    intProperties = _mapper.Map<DtoIntProperties>(_myContext.intProperties),
-                }
-            };
+                    portfolio = p,
+                    dateTimeProperties = dateTimeProperties.FirstOrDefault(x => x.Id == p.PortfolioId),
+                    stringProperties = stringProperties.FirstOrDefault(x => x.Id == p.PortfolioId),
+                    decimalProperties = decimalProperties.FirstOrDefault(x => x.Id == p.PortfolioId),
+                    intProperties = intProperties.FirstOrDefault(x => x.Id == p.PortfolioId),
+                });
+            }
+
+            return res;
         }
     }
 }
