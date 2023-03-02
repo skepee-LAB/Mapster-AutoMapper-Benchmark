@@ -204,6 +204,28 @@ The simple case regards a one-to-one mapping with a Dto with just five fields:
     }
 ```
 
+## Big case
+```cs
+    public class DtoPortfolio
+    {
+        public int Id { get; set; }
+        public string Code { get; set; }
+        public string Name { get; set; }
+        public string Type { get; set; }
+        public string Status { get; set; }
+        ...
+        public decimal Prop101 { get; set; }
+        ...
+        public decimal Prop150 { get; set; }
+        public string Prop1 { get; set; }
+        ...
+        public string Prop50 { get; set; }
+        public DateTime Prop151 { get; set; }
+        ...
+        public DateTime Prop200 { get; set; }
+    }
+```
+
 ## Unflattened case
 The unflattened case regards a mapping with nested objects:
 
