@@ -33,7 +33,7 @@ namespace SimpleBenchmarkMapper
         }
 
         [Benchmark]
-        public void MapsterPortfolioSmallNoAdapter ()
+        public void MapsterPortfolioSmallNoAdapter()
         {
             foreach (var p in portfolios)
             {
