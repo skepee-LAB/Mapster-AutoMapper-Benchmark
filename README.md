@@ -166,6 +166,20 @@ Here a summary of different cases:
     <td><span>&#10003;</span></td>
 </tr>
 <tr>
+    <td><em>Big</em></td>
+    <td>with Adapter</td>
+    <td><span>&#10003;</span></td>
+    <td><span>&#10003;</span></td>
+    <td><span>&#10003;</span></td>
+</tr>
+<tr>
+    <td><em>Big</em></td>
+    <td>No Adapter</td>
+    <td><span>&#10003;</span></td>
+    <td><span>&#10003;</span></td>
+    <td><span>&#10003;</span></td>
+</tr>    
+<tr>
     <td><em>Unflattened</em></td>
     <td>Nested objects, no Adapter</td>
     <td><span>&#10003;</span></td>
