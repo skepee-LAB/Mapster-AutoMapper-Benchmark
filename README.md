@@ -260,26 +260,50 @@ By adding an annotation on the size property, we can parameterize the benchmark.
     public int numElements { get; set; }
 ```
 
-<strong>Simple Portfolio - No Adapter </strong>
-|      Method      | numElements |  Mean (μs)  | Allocated |
-| :---             | ----------- | ----------- | ---------- |
-|   AutoMapper     |       100   | 10.688      | 10.98 KB  |
-|   Mapster        |       100   | 4.997       | 10.98 KB  | 
-|   MapsterCodeGen |       100   | <code style="color:yellow"> 4.471</code>    | 1.7929  | 0.0644 |  10.98 KB   |
+<strong>Simple Portfolio - With Adapter - 10 elements </strong>
+|     Method     |         Mean | Allocated |
+|--------------- |------------:|----------:|
+| MapsterCodeGen |    403.8 ns |   1.14 KB |
+| Mapster        |    434.7 ns |   1.14 KB |
+| AutoMapper     |    974.8 ns |   1.17 KB |
 
-In the mapping one-to-one for a list of ```100``` portfolios with the same allocation memory <strong>Mapster CodeGen</strong> is more performing.
+<strong>Simple Portfolio - No Adapter - 10 elements </strong>
+|      Method      |        Mean | Allocated |
+|----------------- |------------:|----------:|
+|   MapsterCodeGen |    417.7 ns |   1.14 KB |
+|   Mapster        |    529.1 ns |   1.14 KB |
+|   AutoMapper     |    996.8 ns |   1.17 KB |
+
+<strong>Simple Portfolio - With Adapter - 100 elements </strong>
+|     Method     |       Mean  | Allocated |
+|--------------- |------------ |----------:|
+| MapsterCodeGen |  3,788.3 ns |  10.98 KB |
+| Mapster        |  4,110.2 ns |  10.98 KB |
+| AutoMapper     |  9,651.9 ns |  11.25 KB |
+
+<strong>Simple Portfolio - No Adapter - 100 elements </strong>
+|     Method       |    Mean     | Allocated |
+|----------------- |------------ |----------:|
+|   MapsterCodegen |  3,862.9 ns |  10.98 KB |
+|   Mapster        |  4,481.8 ns |  10.98 KB |
+|   AutoMapper     | 10,086.9 ns |  11.25 KB |
+
+<strong>Simple Portfolio - With Adapter - 1000 elements </strong>
+|     Method       |        Mean | Allocated |
+|----------------- |------------:|----------:|
+| MapsterCodeGen   | 37,456.1 ns | 109.42 KB |
+| Mapster          | 40,872.3 ns | 109.42 KB |
+| AutoMapper       | 99,565.3 ns | 112.05 KB |
+
+<strong>Simple Portfolio - No Adapter - 1000 elements </strong>
+|     Method         |        Mean | Allocated |
+|------------------- |------------:|----------:|
+|   MapsterCodeGen   | 38,104.4 ns | 109.42 KB |
+|   Mapster          | 44,300.2 ns | 109.42 KB |
+|   AutoMapper       | 98,356.1 ns | 112.05 KB |
 
 
-
-<strong>Simple Portfolio - With Adapter</strong>
-
-|   Method   | numElements |  Mean (μs)| Allocated |
-|----------- |------------ |----------:|---------: |
-| AutoMapper |         100 |  9.761    | 10.98 KB   |
-| Mapster    |         100 | 4.622     | 10.98 KB |
-| MapsterCodeGen |         100 | <code style="color : yellow">4.407</code>|10.98 KB |
-
-Also in this case in the mapping one-to-one for a list of ```100``` portfolios with the same allocation memory <strong>Mapster CodeGen</strong> is more performing.
+In the mapping one-to-one for a list of portfolios with the same allocation memory <strong>Mapster CodeGen</strong> is more performing.
 Futhermore, as we can see, there is no much difference between ```Adapter``` and ```No Adapter``` scenario.
 The use of Adapter then is clearly suggested only for situations where the ```Dto``` is already defined and we cannot create from scratch.
 
@@ -328,12 +352,27 @@ As we can see we have a better performance and less memory allocation at the sam
 
 AutoMapper With Adapter - comparing with struct
 
-|                                    Method | numElements |       Mean | Allocated |
-|------------------------------------------ |------------ |-----------:|----------:|
-| AutoMapper-WithAdapterRecord |        1000 | <code style="color : yellow">98.373 μs</code> |  56048 B |
-|       AutoMapper-WithAdapter |        1000 | 102.138 μs | 112048 B |
-|         AutoMapper-NoAdapter |        1000 | 103.403 μs |  112048 B |
-|   AutoMapper-NoAdapterRecord |        1000 | 103.480 μs |   56048 B |
+|        Method              | numElements |        Mean | Allocated |
+|---------------------------:|------------ |------------:|----------:|
+| AutoMapperNoAdapterRecord  |          10 |    970.3 ns |     608 B |
+| AutoMapperWithAdapter      |          10 |    974.8 ns |    1168 B |
+| AutoMapperWithAdapterRecord|          10 |    979.9 ns |     608 B |
+| AutoMapperNoAdapter        |          10 |    996.8 ns |    1168 B |
+
+|      Method                | numElements |        Mean | Allocated |
+|---------------------------:|------------ |------------ |----------:|
+| AutoMapperNoAdapterRecord  |         100 |  9,478.7 ns |    5648 B |
+| AutoMapperWithAdapterRecord|         100 |  9,503.1 ns |    5648 B |
+| AutoMapperWithAdapter      |         100 |  9,651.9 ns |   11248 B |
+| AutoMapperNoAdapter        |         100 | 10,086.9 ns |   11248 B |
+
+|      Method                | numElements |        Mean | Allocated |
+|--------------------------- |------------ |------------:|----------:|
+| AutoMapperWithAdapterRecord|        1000 | 95,940.8 ns |   56048 B |
+| AutoMapperNoAdapterRecord  |        1000 | 96,556.7 ns |   56048 B |
+| AutoMapperNoAdapter        |        1000 | 98,356.1 ns |  112048 B |
+| AutoMapperWithAdapter      |        1000 | 99,565.3 ns |  112048 B |
+
 
 # An interesting case
 Here we wil now consider a more complex case. Let's suppose we need to do some 
