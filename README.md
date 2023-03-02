@@ -1,11 +1,7 @@
 # Mapster - AutoMapper
 
 ## Introduction
-This is an analysis of the use of the two most famous mapping tools: [Automapper](https://github.com/AutoMapper/AutoMapper) and [Mapster](https://github.com/MapsterMapper/Mapster). We will show some benchmarks in two different types:
-
-- base code tested by using [BenchmarkDotNet](https://github.com/dotnet/BenchmarkDotNet).
-
-- a real use case with a WebApi endpoint by using [Benchmark Rest](https://github.com/skepee-PROTOTYPE/Benchmark-Rest-Api). 
+This is an analysis of the use of the two most famous mapping tools: [Automapper](https://github.com/AutoMapper/AutoMapper) and [Mapster](https://github.com/MapsterMapper/Mapster). We will show some benchmarks by using [BenchmarkDotNet](https://github.com/dotnet/BenchmarkDotNet).
 
 
 ## Automapper
@@ -341,8 +337,7 @@ The use of Adapter then is clearly suggested only for situations where the ```Dt
 
 
 
-<strong>Unflattened Portfolio - No Adapter</strong>
-
+## Unflattened Portfolio - No Adapter
 
 |         Method | numElements |        Mean |  Allocated   |
 |--------------- |------------ |------------:|------------: |
@@ -631,8 +626,3 @@ We are using the mapping to resolve a problem where mapping does not fits for th
 In order to obtain some ```calculated``` values this is to be done at <strong>model</strong> level, before the mapping level. Probably in this case we need to do some changes in the model, not in the Dto.
 
 
-
-
-## WebApi
-
-## Benchmark WebApi
