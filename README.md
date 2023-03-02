@@ -259,6 +259,7 @@ By adding an annotation on the size property, we can parameterize the benchmark.
     [Params(10, 100, 1000)]
     public int numElements { get; set; }
 ```
+## Simple Portfolio
 
 <strong>Simple Portfolio - With Adapter - 10 elements </strong>
 |     Method     |         Mean | Allocated |
@@ -306,6 +307,38 @@ By adding an annotation on the size property, we can parameterize the benchmark.
 In the mapping one-to-one for a list of portfolios with the same allocation memory <strong>Mapster CodeGen</strong> is more performing.
 Futhermore, as we can see, there is no much difference between ```Adapter``` and ```No Adapter``` scenario.
 The use of Adapter then is clearly suggested only for situations where the ```Dto``` is already defined and we cannot create from scratch.
+
+
+
+## Big Portfolio
+
+| Method                   | numElements |        Mean |  Allocated |
+|------------------------- |------------ |------------:|-----------:|
+| MapsterCodeGenNoAdapter  |          10 |    104.9 μs |   18.17 KB |
+| MapsterCodeGenWithAdapter|          10 |    105.3 μs |   18.17 KB |
+| MapsterWithAdapter       |          10 |    106.6 μs |    36.3 KB |
+| MapsterNoAdapter         |          10 |    107.0 μs |    36.3 KB |
+| AutoMapperNoAdapter      |          10 |    117.8 μs |    36.3 KB |
+| AutoMapperWithAdapter    |          10 |    118.2 μs |    36.3 KB |
+
+| Method                    | numElements |        Mean |  Allocated |
+|-------------------------- |------------ |------------:|-----------:|
+| MapsterCodeGenNoAdapter   |         100 |  1,054.0 μs |   181.3 KB |
+| MapsterCodeGenWithAdapter |         100 |  1,063.9 μs |   181.3 KB |
+| MapsterWithAdapter        |         100 |  1,070.7 μs |  362.55 KB |
+| MapsterNoAdapter          |         100 |  1,079.6 μs |  362.55 KB |
+| AutoMapperNoAdapter       |         100 |  1,154.2 μs |  362.55 KB |
+| AutoMapperWithAdapter     |         100 |  1,193.3 μs |  362.55 KB |
+
+| Method                    | numElements |        Mean |  Allocated |
+|-------------------------- |------------ |------------:|-----------:|
+| MapsterCodeGenWithAdapter |        1000 | 10,186.8 μs | 1812.57 KB |
+| MapsterWithAdapter        |        1000 | 10,775.2 μs | 3625.07 KB |
+| MapsterNoAdapter          |        1000 | 10,782.8 μs | 3625.07 KB |
+| MapsterCodeGenNoAdapter   |        1000 | 10,903.7 μs | 1812.57 KB |
+| AutoMapperNoAdapter       |        1000 | 11,498.7 μs | 3625.06 KB |
+| AutoMapperWithAdapter     |        1000 | 12,082.7 μs | 3625.06 KB |
+
 
 
 <strong>Unflattened Portfolio - No Adapter</strong>
