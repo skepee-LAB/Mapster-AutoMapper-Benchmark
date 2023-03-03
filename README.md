@@ -49,7 +49,7 @@ Mapster is relatively new and the github [page](#https://github.com/MapsterMappe
 In order to use Mapster it is enough to use this simple code:
 
 ```cs
- var pDto = p.Adapt<Portfolio>();
+ var pDto = p.Adapt<DtoPortfolio>();
 ```
 
 and Mapster will map the ```Dto``` automatically. But this is a simple case with one-to-one mapping. For the case with adapter the code remains basically the same but we need to add ```AdaptMember``` as annotation in the props we want to map.
