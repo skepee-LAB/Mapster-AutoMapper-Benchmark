@@ -1,11 +1,7 @@
 # Mapster - AutoMapper
 
 ## Introduction
-This is an analysis of the use of the two most famous mapping tools: [Automapper](https://github.com/AutoMapper/AutoMapper) and [Mapster](https://github.com/MapsterMapper/Mapster). We will show some benchmarks in two different types:
-
-- base code tested by using [BenchmarkDotNet](https://github.com/dotnet/BenchmarkDotNet).
-
-- a real use case with a WebApi endpoint by using [Benchmark Rest](https://github.com/skepee-PROTOTYPE/Benchmark-Rest-Api). 
+This is an analysis of the use of the two most famous mapping tools: [Automapper](https://github.com/AutoMapper/AutoMapper) and [Mapster](https://github.com/MapsterMapper/Mapster). We will show some benchmarks by using [BenchmarkDotNet](https://github.com/dotnet/BenchmarkDotNet).
 
 
 ## Automapper
@@ -53,7 +49,7 @@ Mapster is relatively new and the github [page](#https://github.com/MapsterMappe
 In order to use Mapster it is enough to use this simple code:
 
 ```cs
- var pDto = p.Adapt<Portfolio>();
+ var pDto = p.Adapt<DtoPortfolio>();
 ```
 
 and Mapster will map the ```Dto``` automatically. But this is a simple case with one-to-one mapping. For the case with adapter the code remains basically the same but we need to add ```AdaptMember``` as annotation in the props we want to map.
@@ -170,6 +166,20 @@ Here a summary of different cases:
     <td><span>&#10003;</span></td>
 </tr>
 <tr>
+    <td><em>Big</em></td>
+    <td>with Adapter</td>
+    <td><span>&#10003;</span></td>
+    <td><span>&#10003;</span></td>
+    <td><span>&#10003;</span></td>
+</tr>
+<tr>
+    <td><em>Big</em></td>
+    <td>No Adapter</td>
+    <td><span>&#10003;</span></td>
+    <td><span>&#10003;</span></td>
+    <td><span>&#10003;</span></td>
+</tr>    
+<tr>
     <td><em>Unflattened</em></td>
     <td>Nested objects, no Adapter</td>
     <td><span>&#10003;</span></td>
@@ -191,6 +201,28 @@ The simple case regards a one-to-one mapping with a Dto with just five fields:
         public string Name { get; set; }
         public string Type { get; set; }
         public string Status { get; set; }
+    }
+```
+
+## Big case
+```cs
+    public class DtoPortfolio
+    {
+        public int Id { get; set; }
+        public string Code { get; set; }
+        public string Name { get; set; }
+        public string Type { get; set; }
+        public string Status { get; set; }
+        ...
+        public decimal Prop101 { get; set; }
+        ...
+        public decimal Prop150 { get; set; }
+        public string Prop1 { get; set; }
+        ...
+        public string Prop50 { get; set; }
+        public DateTime Prop151 { get; set; }
+        ...
+        public DateTime Prop200 { get; set; }
     }
 ```
 
@@ -259,33 +291,89 @@ By adding an annotation on the size property, we can parameterize the benchmark.
     [Params(10, 100, 1000)]
     public int numElements { get; set; }
 ```
+## Simple Portfolio
 
-<strong>Simple Portfolio - No Adapter </strong>
-|      Method      | numElements |  Mean (μs)  | Allocated |
-| :---             | ----------- | ----------- | ---------- |
-|   AutoMapper     |       100   | 10.688      | 10.98 KB  |
-|   Mapster        |       100   | 4.997       | 10.98 KB  | 
-|   MapsterCodeGen |       100   | <code style="color:yellow"> 4.471</code>    | 1.7929  | 0.0644 |  10.98 KB   |
+<strong>Simple Portfolio - With Adapter - 10 elements </strong>
+|     Method     |         Mean | Allocated |
+|--------------- |------------:|----------:|
+| MapsterCodeGen |    403.8 ns |   1.14 KB |
+| Mapster        |    434.7 ns |   1.14 KB |
+| AutoMapper     |    974.8 ns |   1.17 KB |
 
-In the mapping one-to-one for a list of ```100``` portfolios with the same allocation memory <strong>Mapster CodeGen</strong> is more performing.
+<strong>Simple Portfolio - No Adapter - 10 elements </strong>
+|      Method      |        Mean | Allocated |
+|----------------- |------------:|----------:|
+|   MapsterCodeGen |    417.7 ns |   1.14 KB |
+|   Mapster        |    529.1 ns |   1.14 KB |
+|   AutoMapper     |    996.8 ns |   1.17 KB |
+
+<strong>Simple Portfolio - With Adapter - 100 elements </strong>
+|     Method     |       Mean  | Allocated |
+|--------------- |------------ |----------:|
+| MapsterCodeGen |  3,788.3 ns |  10.98 KB |
+| Mapster        |  4,110.2 ns |  10.98 KB |
+| AutoMapper     |  9,651.9 ns |  11.25 KB |
+
+<strong>Simple Portfolio - No Adapter - 100 elements </strong>
+|     Method       |    Mean     | Allocated |
+|----------------- |------------ |----------:|
+|   MapsterCodegen |  3,862.9 ns |  10.98 KB |
+|   Mapster        |  4,481.8 ns |  10.98 KB |
+|   AutoMapper     | 10,086.9 ns |  11.25 KB |
+
+<strong>Simple Portfolio - With Adapter - 1000 elements </strong>
+|     Method       |        Mean | Allocated |
+|----------------- |------------:|----------:|
+| MapsterCodeGen   | 37,456.1 ns | 109.42 KB |
+| Mapster          | 40,872.3 ns | 109.42 KB |
+| AutoMapper       | 99,565.3 ns | 112.05 KB |
+
+<strong>Simple Portfolio - No Adapter - 1000 elements </strong>
+|     Method         |        Mean | Allocated |
+|------------------- |------------:|----------:|
+|   MapsterCodeGen   | 38,104.4 ns | 109.42 KB |
+|   Mapster          | 44,300.2 ns | 109.42 KB |
+|   AutoMapper       | 98,356.1 ns | 112.05 KB |
 
 
-
-<strong>Simple Portfolio - With Adapter</strong>
-
-|   Method   | numElements |  Mean (μs)| Allocated |
-|----------- |------------ |----------:|---------: |
-| AutoMapper |         100 |  9.761    | 10.98 KB   |
-| Mapster    |         100 | 4.622     | 10.98 KB |
-| MapsterCodeGen |         100 | <code style="color : yellow">4.407</code>|10.98 KB |
-
-Also in this case in the mapping one-to-one for a list of ```100``` portfolios with the same allocation memory <strong>Mapster CodeGen</strong> is more performing.
+In the mapping one-to-one for a list of portfolios with the same allocation memory <strong>Mapster CodeGen</strong> is more performing.
 Futhermore, as we can see, there is no much difference between ```Adapter``` and ```No Adapter``` scenario.
 The use of Adapter then is clearly suggested only for situations where the ```Dto``` is already defined and we cannot create from scratch.
 
 
-<strong>Unflattened Portfolio - No Adapter</strong>
 
+## Big Portfolio
+
+| Method                   | numElements |        Mean |  Allocated |
+|------------------------- |------------ |------------:|-----------:|
+| MapsterCodeGenNoAdapter  |          10 |    104.9 μs |   18.17 KB |
+| MapsterCodeGenWithAdapter|          10 |    105.3 μs |   18.17 KB |
+| MapsterWithAdapter       |          10 |    106.6 μs |    36.3 KB |
+| MapsterNoAdapter         |          10 |    107.0 μs |    36.3 KB |
+| AutoMapperNoAdapter      |          10 |    117.8 μs |    36.3 KB |
+| AutoMapperWithAdapter    |          10 |    118.2 μs |    36.3 KB |
+
+| Method                    | numElements |        Mean |  Allocated |
+|-------------------------- |------------ |------------:|-----------:|
+| MapsterCodeGenNoAdapter   |         100 |  1,054.0 μs |   181.3 KB |
+| MapsterCodeGenWithAdapter |         100 |  1,063.9 μs |   181.3 KB |
+| MapsterWithAdapter        |         100 |  1,070.7 μs |  362.55 KB |
+| MapsterNoAdapter          |         100 |  1,079.6 μs |  362.55 KB |
+| AutoMapperNoAdapter       |         100 |  1,154.2 μs |  362.55 KB |
+| AutoMapperWithAdapter     |         100 |  1,193.3 μs |  362.55 KB |
+
+| Method                    | numElements |        Mean |  Allocated |
+|-------------------------- |------------ |------------:|-----------:|
+| MapsterCodeGenWithAdapter |        1000 | 10,186.8 μs | 1812.57 KB |
+| MapsterWithAdapter        |        1000 | 10,775.2 μs | 3625.07 KB |
+| MapsterNoAdapter          |        1000 | 10,782.8 μs | 3625.07 KB |
+| MapsterCodeGenNoAdapter   |        1000 | 10,903.7 μs | 1812.57 KB |
+| AutoMapperNoAdapter       |        1000 | 11,498.7 μs | 3625.06 KB |
+| AutoMapperWithAdapter     |        1000 | 12,082.7 μs | 3625.06 KB |
+
+
+
+## Unflattened Portfolio - No Adapter
 
 |         Method | numElements |        Mean |  Allocated   |
 |--------------- |------------ |------------:|------------: |
@@ -328,12 +416,27 @@ As we can see we have a better performance and less memory allocation at the sam
 
 AutoMapper With Adapter - comparing with struct
 
-|                                    Method | numElements |       Mean | Allocated |
-|------------------------------------------ |------------ |-----------:|----------:|
-| AutoMapper-WithAdapterRecord |        1000 | <code style="color : yellow">98.373 μs</code> |  56048 B |
-|       AutoMapper-WithAdapter |        1000 | 102.138 μs | 112048 B |
-|         AutoMapper-NoAdapter |        1000 | 103.403 μs |  112048 B |
-|   AutoMapper-NoAdapterRecord |        1000 | 103.480 μs |   56048 B |
+|        Method              | numElements |        Mean | Allocated |
+|---------------------------:|------------ |------------:|----------:|
+| AutoMapperNoAdapterRecord  |          10 |    970.3 ns |     608 B |
+| AutoMapperWithAdapter      |          10 |    974.8 ns |    1168 B |
+| AutoMapperWithAdapterRecord|          10 |    979.9 ns |     608 B |
+| AutoMapperNoAdapter        |          10 |    996.8 ns |    1168 B |
+
+|      Method                | numElements |        Mean | Allocated |
+|---------------------------:|------------ |------------ |----------:|
+| AutoMapperNoAdapterRecord  |         100 |  9,478.7 ns |    5648 B |
+| AutoMapperWithAdapterRecord|         100 |  9,503.1 ns |    5648 B |
+| AutoMapperWithAdapter      |         100 |  9,651.9 ns |   11248 B |
+| AutoMapperNoAdapter        |         100 | 10,086.9 ns |   11248 B |
+
+|      Method                | numElements |        Mean | Allocated |
+|--------------------------- |------------ |------------:|----------:|
+| AutoMapperWithAdapterRecord|        1000 | 95,940.8 ns |   56048 B |
+| AutoMapperNoAdapterRecord  |        1000 | 96,556.7 ns |   56048 B |
+| AutoMapperNoAdapter        |        1000 | 98,356.1 ns |  112048 B |
+| AutoMapperWithAdapter      |        1000 | 99,565.3 ns |  112048 B |
+
 
 # An interesting case
 Here we wil now consider a more complex case. Let's suppose we need to do some 
@@ -559,8 +662,3 @@ We are using the mapping to resolve a problem where mapping does not fits for th
 In order to obtain some ```calculated``` values this is to be done at <strong>model</strong> level, before the mapping level. Probably in this case we need to do some changes in the model, not in the Dto.
 
 
-
-
-## WebApi
-
-## Benchmark WebApi
