@@ -5,11 +5,11 @@ namespace WebApiMapsterCodeGen.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
-    public class MapsterController : Controller
+    public class MapsterCodeGenController : Controller
     {
         public readonly IPortfolioRepository repository;
 
-        public MapsterController(IPortfolioRepository _repository)
+        public MapsterCodeGenController(IPortfolioRepository _repository)
         {
             repository = _repository;
         }

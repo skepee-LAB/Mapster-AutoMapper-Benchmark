@@ -12,7 +12,6 @@ builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 builder.Services.AddDbContext<MyContext>(options => options.UseSqlServer(builder.Configuration.GetConnectionString("local")));
 builder.Services.AddScoped<IPortfolioRepository, PortfolioRepository>();
-builder.Services.RegisterMapsterConfiguration();
 
 var app = builder.Build();
 

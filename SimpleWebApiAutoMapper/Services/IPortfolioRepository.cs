@@ -6,7 +6,7 @@ namespace WebApiAutoMapper.Services
 {
     public interface IPortfolioRepository
     {
-        IEnumerable<DtoPortfolioFull> GetPortfolios();
-        DtoPortfolioFull GetPortfolio(int portfolioId);
+        IEnumerable<DtoPortfolio> GetPortfolios();
+        DtoPortfolio GetPortfolio(int portfolioId);
     }
 }

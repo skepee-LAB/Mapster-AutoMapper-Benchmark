@@ -1,6 +1,5 @@
 ﻿using Mapster;
 using WebApiMapsterCodeGen.Domains;
-using WebApiMapsterCodeGen.Json;
 
 namespace WebApiMapsterCodeGen.Services
 {
@@ -13,19 +12,16 @@ namespace WebApiMapsterCodeGen.Services
             myContext = _myContext;
         }
 
-        public JsonPortfolio GetPortfolio(int Id)
+        public PortfolioMap GetPortfolio(int Id)
         {
             var res = myContext.portfolio.FirstOrDefault(x => x.Id == Id);
-            var res_map = res?.Adapt<PortfolioMap>();
-            var jsonPortfolio = res_map?.Adapt<JsonPortfolio>();
-            return jsonPortfolio;
+            return res.Adapt<PortfolioMap>();
         }
 
-        public IEnumerable<JsonPortfolio> GetPortfolios()
+        public IEnumerable<PortfolioMap> GetPortfolios()
         {
             var res = myContext.portfolio.ToList();
-            var jsonPortfolio = res?.Adapt<IEnumerable<JsonPortfolio>>();
-            return jsonPortfolio;
+            return res.Adapt<IEnumerable<PortfolioMap>>();
         }
     }
 }
